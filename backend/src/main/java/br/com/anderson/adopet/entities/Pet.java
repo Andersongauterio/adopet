@@ -19,7 +19,16 @@ public class Pet implements Serializable {
 	private Long id;
 
 	private String name;
-
+	
+	private String size;
+	
+	private String color;
+	
+	private String gender;
+	
+	private PetImg[] petImg;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -35,5 +44,39 @@ public class Pet implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public PetImg[] getPetImg() {
+		return petImg;
+	}
+
+	public void setPetImg(PetImg[] petImg) {
+		this.petImg = petImg;
+	}
+	
+	
 	
 }

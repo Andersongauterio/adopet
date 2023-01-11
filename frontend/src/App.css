@@ -4,6 +4,15 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+:root {
+  --light-color: #f1eaea;
+  --grey-light-50-color: #f1f6fb;
+  --grey-light-100-color: #c0c5c9;
+  --grey-light-125-color: #a7acb0;
+  --grey-light-150-color: #949494;
+
+}
+
 h1,
 h2,
 h3,

@@ -1,15 +1,16 @@
 import './App.css';
+import './assets/styles/custom.scss';
+import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import PetCard from './components/PetCard';
-import PetFilter from './components/PetFilter';
+import PetsList from './components/PetsList';
 
 function App() {
   return (
     <div className="App">
       <>
         <Navbar />
-        <PetFilter />
-        <PetCard />
+        <PetsList />
+        <Footer />
       </>
     </div>
   );

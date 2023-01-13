@@ -1,6 +1,20 @@
 .pet-card-container {
-    height: 200px;
-    width: 200px;
-    border: solid 1px red;
+    border-radius: 10px;
+    height: 300px;
+    width: 300px;
     margin: 10px;
+    background-color: var(--grey-light-100-color);
+}
+
+.pet-card-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.pet-card-img img {
+    width: 200px;
+    height: auto;
 }

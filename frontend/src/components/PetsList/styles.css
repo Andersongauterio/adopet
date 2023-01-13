@@ -2,5 +2,7 @@
     background-color: var(--grey-light-50-color);
     margin-left: 50px;
     margin-right: 50px;
-    margin-bottom: 0;
+    margin-bottom:25px;
+    border-radius: 5px;
+    padding: 20px;
 }

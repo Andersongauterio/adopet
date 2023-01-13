@@ -7,9 +7,11 @@ const PetsList = () => {
     const pet: Pet = {
         id: 1,
         name: "Marley",
+        telefone: 51984322799,
         description: "Pet muito querido buscando um lar",
         size: "G",
-        imgUrl: "https://totosdatete.org.br/wp-content/uploads/2019/05/asdasda.png"
+        imgUrl: "https://vetsmart-parsefiles.s3.amazonaws.com/3327f2ceb6e24aad97bdb7dfe824fd9c_breed.jpg",
+        cidade: "Dois Irmãos/RS"
     }
 
     return (

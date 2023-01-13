@@ -11,8 +11,12 @@ const PetCard = ({ pet }: Props) => {
             <div className="pet-card-img">
                 <img src={pet.imgUrl} alt="Imagem do pet" />
             </div>
-            <h4>Nome: {pet.name}</h4>
-            <h4>Descrição: {pet.description}</h4>
+            <div className="pet-card-info">
+                <h4>Nome: {pet.name}</h4>
+                <h4>Telefone: {pet.telefone}</h4>
+                <h4>Cidade: {pet.cidade}</h4>
+                <h4>Descrição: {pet.description}</h4>
+            </div>
         </div >
     )
 }

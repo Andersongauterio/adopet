@@ -1,20 +1,34 @@
 .pet-card-container {
-    border-radius: 10px;
-    height: 300px;
-    width: 300px;
-    margin: 10px;
-    background-color: var(--grey-light-100-color);
+  border-radius: 10px;
+  height: 300px;
+  width: 300px;
+  margin: 10px;
+  border: solid 2px var(--grey-light-150-color);
 }
 
 .pet-card-img {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10px;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  margin-bottom: 10px;
 }
 
 .pet-card-img img {
-    width: 200px;
-    height: auto;
+  width: auto;
+  height: 100px;
+}
+
+.pet-card-info {
+  padding: 10px;
+  border: var(--grey-light-150-color) solid 1px;
+  border-radius: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.pet-card-info h4 {
+  font-size: 18px;
+  color: var(--grey-light-150-color);
 }

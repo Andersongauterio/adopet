@@ -1,18 +1,10 @@
 import './App.css';
 import './assets/styles/custom.scss';
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import PetsList from './components/PetsList';
+import Routes from './Routes';
 
 function App() {
   return (
-    <div className="App">
-      <>
-        <Navbar />
-        <PetsList />
-        <Footer />
-      </>
-    </div>
+    <Routes />
   );
 }
 

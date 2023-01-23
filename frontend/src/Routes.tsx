@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import PetDetails from "./pages/PetDetails";
 
 const Routes = () => {
 	return (
@@ -10,6 +11,9 @@ const Routes = () => {
                 <Route path="/" exact>
                     <Home />
                 </Route>
+                <Route path="/pet/:petId">
+					<PetDetails />
+				</Route>
             </Switch>
         </BrowserRouter>
     );

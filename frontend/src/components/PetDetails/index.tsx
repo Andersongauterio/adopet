@@ -4,7 +4,7 @@ const PetDetails = () => {
     return (
         <div className="pet-details-container">
             <div className="pet-details-main-img">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/American_Bully_Stud_Male_%2811527292106%29.jpg" alt="Imagem do pet" />
+                <img src="#" alt="Imagem do pet" />
             </div>
             <div className="pet-details-info">
                 <h4>Nome do Pet: </h4>

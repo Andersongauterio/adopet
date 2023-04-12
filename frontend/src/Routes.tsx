@@ -1,21 +1,24 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import PetDetails from "./pages/PetDetails";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import PetDetails from './components/PetDetails';
+import Contact from './pages/Contact';
+import Home from './pages/Home';
 
 const Routes = () => {
-	return (
-        <BrowserRouter>
-            <Navbar />
-            <Switch>
-                <Route path="/" exact>
-                    <Home />
-                </Route>
-                <Route path="/pet/:petId">
-					<PetDetails />
-				</Route>
-            </Switch>
-        </BrowserRouter>
-    );
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/contact">
+          <Contact />
+        </Route>
+        <Route path="/pet">
+          <PetDetails />
+        </Route>
+      </Switch>
+    </Router>
+  );
 };
+
 export default Routes;

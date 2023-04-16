@@ -2,3 +2,18 @@
     height: 100px;
     margin-bottom: 20px;
 }
+
+.adopet-navbat-logo {
+    color: #FFFF;
+}
+
+.main-menu {
+	display: flex;
+	font-size: 18px;
+	width: 380px;
+	justify-content: space-between;
+}
+
+.main-menu a {
+	color: rgba(255, 255, 255, 0.5);
+}

@@ -1,10 +1,11 @@
 import './App.css';
 import './assets/styles/custom.scss';
-import Routes from './Routes';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import AppRoutes from './Routes';
 
 function App() {
   return (
-    <Routes />
+    <AppRoutes />
   );
 }
 

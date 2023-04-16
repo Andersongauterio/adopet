@@ -1,24 +1,18 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import PetDetails from './components/PetDetails';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 
-const Routes = () => {
+const AppRoutes = () => {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/contact">
-          <Contact />
-        </Route>
-        <Route path="/pet">
-          <PetDetails />
-        </Route>
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/pet" element={<PetDetails />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
-export default Routes;
+export default AppRoutes;

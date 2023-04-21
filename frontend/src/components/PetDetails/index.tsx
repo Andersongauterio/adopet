@@ -1,4 +1,4 @@
-import './styles.css';
+import "./styles.css";
 
 const PetDetails = () => {
     return (
@@ -17,7 +17,7 @@ const PetDetails = () => {
                 <h4>Telefone: </h4>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default PetDetails;

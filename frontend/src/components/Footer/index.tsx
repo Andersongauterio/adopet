@@ -1,9 +1,11 @@
-import './styles.css';
+import "./styles.css";
 
 const Footer = () => {
     return (
-        <footer className="footer navbar-fixed-bottom footer-container text-center bg-primary">
-            <h6>Anderson Gautério</h6>
+        <footer className="bg-primary text-white py-3 mt-auto">
+            <div className="container text-center">
+                <p>Footer content goes here</p>
+            </div>
         </footer>
     );
 };

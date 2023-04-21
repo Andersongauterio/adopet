@@ -1,5 +1,5 @@
-import { Pet } from '../../types/pet';
-import './styles.css';
+import { Pet } from "../../types/pet";
+import "./styles.css";
 
 type Props = {
     pet: Pet;
@@ -18,7 +18,7 @@ const PetCard = ({ pet }: Props) => {
                 <h4>Descrição: {pet.description}</h4>
             </div>
         </div >
-    )
-}
+    );
+};
 
 export default PetCard;

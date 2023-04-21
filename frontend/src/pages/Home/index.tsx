@@ -1,16 +1,12 @@
-import Footer from '../../components/Footer';
-import Navbar from '../../components/Navbar';
-import PetsList from '../../components/PetsList';
-import './styles.css';
+import PetsList from "../../components/PetsList";
+import "./styles.css";
 
 const Home = () => {
-    return (
-        <div>
-            <Navbar />
-            <PetsList />
-            <Footer />
-        </div>
-    );
-}
+  return (
+    <div className="adopet-home-container">
+      <PetsList />
+    </div>
+  );
+};
 
 export default Home;

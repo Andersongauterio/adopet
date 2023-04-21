@@ -1,4 +1,4 @@
-import './styles.css';
+import "./styles.css";
 
 const PetFilter = () => {
 
@@ -6,7 +6,7 @@ const PetFilter = () => {
         <div className="pet-filter-container">
             <h1>Pet Filter</h1>
         </div>
-    )
-}
+    );
+};
 
 export default PetFilter;

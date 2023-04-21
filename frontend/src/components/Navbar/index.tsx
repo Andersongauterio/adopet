@@ -1,6 +1,6 @@
-import { NavLink } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import './styles.css';
+import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./styles.css";
 
 const Navbar = () => {
 
@@ -22,27 +22,27 @@ const Navbar = () => {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="adopet-navbar">
-					<ul className="navbar-nav offset-md-2 main-menu">
-						<li>
-							<NavLink to="/">
+                    <ul className="navbar-nav offset-md-2 main-menu">
+                        <li>
+                            <NavLink to="/">
 								HOME
-							</NavLink>
-						</li>
-						<li>
-							<NavLink to="/pet">
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/pet">
 								Pets
-							</NavLink>
-						</li>
-						<li>
-							<NavLink to="/contact" >
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/contact" >
 								Contato
-							</NavLink>
-						</li>
-					</ul>
-				</div>
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
-    )
-}
+    );
+};
 
 export default Navbar;

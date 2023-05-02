@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Pet } from "../../types/pet";
 import PetCard from "../PetCard";
+import Modal from 'react-modal';
 import PetCardDetails from "../PetCardDetails";
 import "./styles.css";
 
@@ -81,19 +82,15 @@ const PetsList = () => {
     }
   ];
 
-  const [showPetDetails, setShowPetDetails] = useState(false);
   const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
 
   const handlePetCardClick = (pet: Pet) => {
     setSelectedPet(pet);
-    setShowPetDetails(true);
-    console.log("clicou");
-  }
+  };
 
-  const handlePetCardDetailsClose = () => {
-    setShowPetDetails(false);
+  const closeModal = () => {
     setSelectedPet(null);
-  }
+  };
 
   return (
     <div className="pets-list-container">
@@ -103,10 +100,32 @@ const PetsList = () => {
             <PetCard pet={pet} onClick={() => handlePetCardClick(pet)} />
           </div>
         ))}
-      </div>
-      {showPetDetails && selectedPet && (
-        <PetCardDetails pet={selectedPet} onClose={handlePetCardDetailsClose} />
+        {selectedPet && (
+        <Modal 
+          isOpen={true} 
+          onRequestClose={closeModal} style={{
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.5)'
+          },
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            width: '50%',
+            maxHeight: '80%',
+            overflow: 'auto'
+          }
+        }}>
+          <PetCardDetails pet={selectedPet} />
+          <button 
+            className="btn btn-primary"
+            onClick={closeModal}>Fechar</button>
+        </Modal>
       )}
+      </div>
     </div>
   );
 };

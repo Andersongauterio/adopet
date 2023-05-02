@@ -3,14 +3,12 @@ import "./styles.css";
 
 interface PetCardDetailsProps {
   pet: Pet;
-  onClose: () => void;
 }
 
-const PetCardDetails = ({ pet, onClose }: PetCardDetailsProps) => {
+const PetCardDetails = ({ pet }: PetCardDetailsProps) => {
   return (
     <div className="pet-card-details-container">
       <div className="pet-card-details-content">
-        <button className="close-btn" onClick={onClose}>X</button>
         <div className="pet-card-details-img">
           <img src={pet.imgUrl} alt={pet.name} />
         </div>

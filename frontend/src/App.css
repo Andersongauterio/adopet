@@ -48,8 +48,13 @@ a:hover {
   color: #263238;
   height: 50px;
   background-color: #ffff;
+  margin-bottom: 10px;
 }
  
 .base-input::placeholder {
   color: #9E9E9E;
+}
+
+textarea {
+  min-height: 150px; /* adjust this value to fit your design */
 }

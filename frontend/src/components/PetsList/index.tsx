@@ -114,15 +114,17 @@ const PetsList = () => {
             bottom: 'auto',
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
-            width: '50%',
+            width: '30%',
             maxHeight: '80%',
             overflow: 'auto'
           }
         }}>
-          <PetCardDetails pet={selectedPet} />
-          <button 
-            className="btn btn-primary"
-            onClick={closeModal}>Fechar</button>
+          <div className="pet-card-modal-container">
+            <PetCardDetails pet={selectedPet} />
+            <button 
+              className="btn btn-primary"
+              onClick={closeModal}>Fechar</button>
+          </div>
         </Modal>
       )}
       </div>

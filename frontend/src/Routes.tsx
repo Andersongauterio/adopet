@@ -3,6 +3,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import PetCatalog from "./pages/PetCatalog";
 
 const AppRoutes = () => {
     return (
@@ -10,6 +11,7 @@ const AppRoutes = () => {
             <Navbar />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/pets" element={<PetCatalog />} />
                 <Route path="/contact" element={<Contact />} />
             </Routes>
             <Footer />

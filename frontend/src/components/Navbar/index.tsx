@@ -24,12 +24,7 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="adopet-navbar">
                     <ul className="navbar-nav offset-md-2 main-menu">
                         <li>
-                            <NavLink to="/">
-								HOME
-                            </NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="/pet">
+                            <NavLink to="/pets">
 								Pets
                             </NavLink>
                         </li>

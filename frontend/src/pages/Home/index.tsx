@@ -1,10 +1,9 @@
-import PetsList from "../../components/PetsList";
 import "./styles.css";
 
 const Home = () => {
   return (
     <div className="adopet-home-container">
-      <PetsList />
+      <h1>Home</h1>
     </div>
   );
 };

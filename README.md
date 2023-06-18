@@ -2,11 +2,14 @@
 
 AdoPet é um portal para divulgação e controle de adoção de Pets.
 
-Algumas Sistema desenvolvido seguindo as seguintes premissas: 
-1. Será possível que público em geral possa cadastrar Pets para adoção.
+O portal deve contar com um Front-end onde o usuário vai realizar as iterações e um back-end responsável pelas APIs. O Front-end deve ser desenvolvido utilizando ReactJS e o Back-end deve utilizar o framework NestJS.
+A aplicação front-end deve consumir os recursos do back-end para consultar e persistir os dados da aplicação.
+
+# Premissas: 
+1. Será possível que um usuário cadastrado possa cadastrar Pets para adoção.
     Campos obrigatórios que vão ser definidos devem ser preenchidos no cadastro de um pet para adoção. Nome do pet, a espécie, o sexo, a cidade, alguma descrição, pelo menos uma foto e um contato.
 
-2. público em geral vai poder consultar os Pets cadastrados para adoção
+2. Usuário sem cadastro deve poder consultar os Pets cadastrados para adoção
 3. Qualquer pessoa vai poder se cadastrar em uma fila de espera para adoção informando alguns dados obrigatórios. 
     Caracteristicas do pet que está procurando. 
 4. Ao ser cadastrado um pet para adoção uma busca na fila de adoção deve ser realizaza automaticamente e em caso de compatibilidade, o usuário na fila de adoção deve ser notificado.
@@ -14,21 +17,22 @@ Algumas Sistema desenvolvido seguindo as seguintes premissas:
 # Entidades
 
 `Pet`
-id
-name
-age
-genre
-type
-size
-details
-image
+id: number
+name: string
+age: number
+genre: enum 
+type: enum
+size: enum
+details: string
+imageUrl: string
+status: enum
 
 `user`
-id
-name
-email
-phone
-address
+id: number
+name: string
+email: string
+phone: string
+address: string
 
 # Endpoints
 

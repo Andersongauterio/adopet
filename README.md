@@ -49,3 +49,5 @@ address: string
 - `findById{id}` -> Retorna informações do usuário com base no ID.
 - `addUser` -> Cadastra usuário no sistema.  
 - `updateUser` -> Atualiza dados do Usuário
+
+![Diagrama de classes](diagrama_de_classes.jpg)

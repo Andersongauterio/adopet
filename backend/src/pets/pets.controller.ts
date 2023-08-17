@@ -8,8 +8,8 @@ export class PetsController {
   constructor(private readonly petService: PetsService) {}
 
   @Get()
-  async getAllPets() {
-    return JSON.stringify({ pet1: 'teste' });
+  async getAllPets(): Promise<Pet[]> {
+    return this.petService.getAllPets();
   }
 
   @Post()

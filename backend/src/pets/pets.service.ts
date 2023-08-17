@@ -4,13 +4,21 @@ import { Pet } from './interfaces/pets.interface';
 
 @Injectable()
 export class PetsService {
-
-private pets: Pet[] = [];
+  private pets: Pet[] = [];
 
   async createPet(createPetDTO: CreatePetDTO): Promise<Pet> {
-    return {
+    const pet: Pet = {
       ...createPetDTO,
-      id: 1
+      id: this.pets.length + 1,
     };
+
+    this.pets.push(pet);
+
+    return pet;
   }
+
+  async getAllPets(): Promise<Pet[]> {
+      return this.pets;
+  }
+
 }

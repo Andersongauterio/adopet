@@ -1,4 +1,5 @@
-export interface CreatePetDTO {
+export interface Pet {
+  id: number;
   name: string;
   description: string;
   birth_date: string;

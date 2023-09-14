@@ -3,74 +3,92 @@
 Desenvolver um sistema web regional de adoção de animais de estimação, onde usuários interessados em adotar podem procurar e entrar em contato com doadores de animais. O sistema incluirá funcionalidades como cadastro de usuários, listagens detalhadas de animais para adoção, filtros de pesquisa por critérios como espécie e raça, sistema de mensagens para comunicação entre adotantes e doadores, além de recursos educativos sobre cuidados responsáveis com animais. A plataforma será regionalizada, com foco em uma área geográfica específica, promovendo a adoção responsável e o bem-estar dos animais de estimação.
 O principal objetivo desse trabalho é melhorar a vida dos animais e das pessoas, promovendo a responsabilidade, a compaixão e a conscientização sobre questões relacionadas aos animais de estimação.
 Esse sistema também pode servir como uma ferramenta de colaboração com abrigos de animais, ajudando a encontrar lares para animais resgatados.
+O bem-estar dos animais de estimação é uma questão crucial e um dos fatores que influência diretamente isso, é a adoção responsável. ASPCA (American Society for the Prevention of Cruelty to Animals)
 
 # 2. OBJETIVOS DA CONSTRUÇÃO DA SOLUÇÃO
 
-1. Desenvolvimento de Funcionalidades:
+A construção do ADOPET tem os seguintes objetivos:
 
-Definir uma lista clara de funcionalidades que que o sistema precisa oferecer, desde o cadastro de usuários até a pesquisa de animais para adoção e a comunicação entre adotantes e doadores. 
+1. Aumentar o Número de Adoções: O principal objetivo é aumentar o número de animais de estimação adotados por meio da plataforma, proporcionando a eles lares amorosos.
 
-2. Design de Interface do Usuário (UI/UX):
-Garantir que o Frontend em React tenha um design intuitivo e amigável ao usuário. Considerar a experiência do usuário (UX) ao projetar fluxos de navegação, layouts e interações.
+2. Reduzir o Abandono de Animais: Minimizar o abandono de animais de estimação, promovendo a responsabilidade e o compromisso dos adotantes.
 
-3. Desenvolvimento de API REST:
-No Backend em NestJS, implementar endpoints REST bem documentados para permitir a comunicação eficaz entre o Frontend e o Backend. Priorizar a segurança e a validação de dados nas chamadas de API.
+3. Educar os Adotantes: Fornecer recursos educacionais sobre cuidados adequados com animais de estimação para garantir que os adotantes estejam bem informados.
 
-4. Banco de Dados PostgreSQL:
-Desenhar e crie o esquema do banco de dados PostgreSQL para armazenar informações de usuários, detalhes de animais para adoção, mensagens e quaisquer outros dados relevantes. 
+4. Promover a Esterilização/Castração: Incentivar a esterilização/castração de animais de estimação como parte do processo de adoção para controlar a superpopulação.
 
-5. Segurança:
-Implementar medidas de segurança em todas as camadas do sistema, incluindo autenticação de usuários, proteção contra ameaças como injeção de SQL.
+5. Facilitar a Comunicação: Criar um ambiente seguro e eficaz para que adotantes e doadores de animais possam se comunicar e colaborar.
 
-6. Escalabilidade:
-Projetar a aplicação com a escalabilidade em mente. À medida que o sistema cresce, ele deve ser capaz de lidar com um aumento no número de usuários e animais cadastrados.
+6. Construir uma Comunidade de Amantes de Animais: Criar uma comunidade online onde amantes de animais possam compartilhar experiências, dicas e apoio.
 
-7. Testes e Qualidade de Código:
-Implementar testes automatizados para garantir que o sistema funcione conforme o esperado. Manter padrões de qualidade de código para facilitar a manutenção futura.
+7. Aumentar a Conscientização sobre Bem-Estar Animal: Promover a conscientização sobre questões de bem-estar animal, como o tratamento ético de animais de estimação.
+
+8. Fornecer uma Experiência de Usuário Excelente: Oferecer uma plataforma de adoção fácil de usar, com uma interface atraente e funcionalidades intuitivas.
+
+9. Construir uma Base de Dados Abrangente: Criar uma base de dados abrangente de animais disponíveis para adoção e adotantes em potencial para facilitar a correspondência eficaz.
 
 # 3. ELABORAÇÃO DA JORNADA DO USUÁRIO
 
-## Para Usuários em Busca de Adoção:
+O AdoPet atende a três perfis de usuário: adotantes em busca de um pet, doadores de animais, e administradores que garantem o correto funcionamento da plataforma.
 
-•	Pesquisar Animais para Adoção: Os usuários podem pesquisar animais disponíveis para adoção com base em critérios como espécie, raça, idade, gênero, tamanho e localização.
+## Usuários em Busca de Adoção:
 
-•	Visualizar Detalhes dos Animais: Os usuários podem ver informações detalhadas sobre os animais, incluindo fotos, descrições, históricos médicos, requisitos de adoção e a localização do animal.
+1.	Pesquisar Animais para Adoção: Os usuários podem pesquisar animais disponíveis para adoção com base em critérios como espécie, raça, idade, gênero, tamanho e localização.
 
-•	Entrar em Contato com Doadores: Os adotantes podem entrar em contato com os doadores de animais para fazer perguntas, agendar visitas e expressar seu interesse na adoção.
+2.	Visualizar Detalhes dos Animais: Os usuários podem ver informações detalhadas sobre os animais, incluindo fotos, descrições, históricos médicos, requisitos de adoção e a localização do animal.
 
-•	Salvar Favoritos: Permita que os adotantes salvem animais favoritos em uma lista para acompanhamento.
+3.	Entrar em Contato com Doadores: Os adotantes podem entrar em contato com os doadores de animais para fazer perguntas, agendar visitas e expressar seu interesse na adoção.
 
-•	Receber Alertas de Novos Animais: Os usuários podem optar por receber notificações por e-mail ou push quando novos animais que correspondam aos seus critérios de pesquisa forem cadastrados.
+4.	Salvar Favoritos: Permita que os adotantes salvem animais favoritos em uma lista para acompanhamento.
 
-•	Solicitar Adoção: Os adotantes podem iniciar o processo de adoção, preenchendo um formulário de solicitação online.
+5.	Receber Alertas de Novos Animais: Os usuários podem optar por receber notificações por e-mail ou push quando novos animais que correspondam aos seus critérios de pesquisa forem cadastrados.
 
-•	Avaliar e Classificar Animais e Doadores: Os adotantes podem avaliar e classificar os animais adotados e os doadores com base em sua experiência de adoção.
+6.	Solicitar Adoção: Os adotantes podem iniciar o processo de adoção, preenchendo um formulário de solicitação online.
 
-## Para Usuários Cadastrando Pets para Adoção:
+7.	Avaliar e Classificar Animais e Doadores: Os adotantes podem avaliar e classificar os animais adotados e os doadores com base em sua experiência de adoção.
 
-•	Cadastrar Animais para Adoção: Os doadores podem criar perfis detalhados para os animais que desejam doar, incluindo informações sobre a história do animal, personalidade, cuidados médicos e fotos.
+## Usuários Cadastrando Pets para Adoção:
 
-•	Editar Perfis de Animais: Os doadores podem atualizar as informações dos animais conforme necessário, como disponibilidade, fotos e descrições.
+1.	Cadastrar Animais para Adoção: Os doadores podem criar perfis detalhados para os animais que desejam doar, incluindo informações sobre a história do animal, personalidade, cuidados médicos e fotos.
 
-•	Responder a Consultas de Adotantes: Os doadores podem receber e responder a mensagens de adotantes interessados.
+2.	Editar Perfis de Animais: Os doadores podem atualizar as informações dos animais conforme necessário, como disponibilidade, fotos e descrições.
 
-•	Aceitar Solicitações de Adoção: Os doadores podem revisar as solicitações de adoção recebidas e aceitar ou recusar com base em critérios predefinidos.
+3.	Responder a Consultas de Adotantes: Os doadores podem receber e responder a mensagens de adotantes interessados.
+
+4.	Aceitar Solicitações de Adoção: Os doadores podem revisar as solicitações de adoção recebidas e aceitar ou recusar com base em critérios predefinidos.
 
 ## Para Ambos os Tipos de Usuários:
 
-•	Registro e Autenticação: Os usuários devem se registrar e autenticar para acessar todas as funcionalidades da plataforma.
+1.	Registro e Autenticação: Os usuários devem se registrar e autenticar para acessar todas as funcionalidades da plataforma.
 
-•	Sistema de Mensagens: Implemente um sistema de mensagens para permitir que adotantes e doadores comuniquem-se com segurança através da plataforma.
+2.	Sistema de Mensagens: Implemente um sistema de mensagens para permitir que adotantes e doadores comuniquem-se com segurança através da plataforma.
 
-•	Gerenciamento de Perfil: Permita que os usuários gerenciem seus perfis, incluindo informações pessoais, preferências de notificação e configurações de privacidade.
+3.	Gerenciamento de Perfil: Permita que os usuários gerenciem seus perfis, incluindo informações pessoais, preferências de notificação e configurações de privacidade.
 
-•	Avaliações e Classificações: Tanto adotantes quanto doadores podem avaliar e classificar uns aos outros para construir uma reputação de confiança na comunidade.
+4.	Avaliações e Classificações: Tanto adotantes quanto doadores podem avaliar e classificar uns aos outros para construir uma reputação de confiança na comunidade.
 
-•	Políticas e Regulamentos: Disponibilize informações sobre políticas de adoção responsável, regulamentos e termos de uso da plataforma.
+5.	Políticas e Regulamentos: Disponibilize informações sobre políticas de adoção responsável, regulamentos e termos de uso da plataforma.
 
-•	Relatórios de Abuso: Permita que os usuários relatem atividades suspeitas ou abuso na plataforma para garantir um ambiente seguro.
+6.	Relatórios de Abuso: Permita que os usuários relatem atividades suspeitas ou abuso na plataforma para garantir um ambiente seguro.
+
+## Usuário Administrador:
+
+1. Acesso ao Painel de Controle: O administrador faz login em seu painel de controle personalizado no AdoPet.
+
+2. Monitoramento de Perfis de Animais: O administrador pode visualizar e monitorar os perfis de animais listados na plataforma, garantindo que as informações e imagens sejam precisas e apropriadas.
+
+3. Verificação de Solicitações de Adoção: O administrador revisa e verifica as solicitações de adoção enviadas pelos adotantes em potencial para garantir que sejam legítimas e em conformidade com as políticas da plataforma.
+
+4. Moderação de Mensagens e Comentários: O administrador monitora a comunicação entre adotantes e doadores de animais, intervindo quando necessário para garantir um ambiente seguro e respeitoso.
+
+5. Assistência aos Usuários: O administrador oferece suporte aos adotantes, doadores de animais e outros usuários da plataforma, respondendo a perguntas e resolvendo problemas conforme necessário.
+
+6. Análise de Dados: O administrador analisa dados e métricas da plataforma para identificar tendências, oportunidades de melhoria e áreas que requerem atenção especial.
 
 # 4. APELO MERCADOLÓGICO DA SOLUÇÃO
+
+A solução AdoPet atende à crescente necessidade de reduzir o abandono de animais, fornecendo uma plataforma centralizada e educativa para conectar adotantes a doadores, promovendo a adoção responsável e o bem-estar animal.
+Tendo o potencial de impactar positivamente diversas partes interessadas, melhorando o bem-estar dos animais de estimação, promovendo a adoção responsável e construindo uma comunidade de amantes de animais comprometidos.
 
 A solução de adoção de animais de estimação beneficiaria várias partes interessadas:
 •	Animais de Estimação em Busca de Lar: O benefício mais óbvio é para os próprios animais, que têm a oportunidade de encontrar lares amorosos e responsáveis onde possam receber cuidados adequados.
@@ -83,9 +101,12 @@ A solução de adoção de animais de estimação beneficiaria várias partes in
 •	Autoridades Locais: Autoridades locais podem se beneficiar ao colaborar com a plataforma para cumprir regulamentações de cuidados com animais e promover a adoção como uma alternativa à compra de animais de estimação.
 •	Potenciais Investidores ou Apoiadores: Investidores ou apoiadores que compartilham a visão de promover o bem-estar animal e a adoção responsável podem se beneficiar ao investir ou apoiar financeiramente a sua solução.
 
-Essa solução tem o potencial de impactar positivamente diversas partes interessadas, melhorando o bem-estar dos animais de estimação, promovendo a adoção responsável e construindo uma comunidade de amantes de animais comprometidos.
+
 
 # 5. CICLO DE DESENVOLVIMENTO DA SOLUÇÃO
+
+Para o desenvolvimento de uma solução como o AdoPet, que envolve a criação de um sistema web com múltiplos perfis de usuário e funcionalidades complexas, uma abordagem ágil de desenvolvimento de software é a mais apropriada. A metodologia ágil permite uma flexibilidade maior para lidar com mudanças de requisitos e incorporar feedback contínuo dos usuários, o que é fundamental para uma solução que pode evoluir com base nas necessidades em constante mudança dos adotantes e doadores de animais. A metodologia ágil escolhida foi o Scrum. Scrum é uma estrutura de desenvolvimento ágil que enfatiza a colaboração, a entrega iterativa e a adaptação contínua. "The Scrum Guide" (Guia Scrum) (https://www.scrum.org/resources/scrum-guide).
+É importante adaptar a metodologia escolhida às necessidades específicas do projeto AdoPet para garantir que a solução atenda às expectativas e necessidades de todos os envolvidos.
 
 ## 1. Planejamento Inicial:
 

@@ -106,7 +106,7 @@ A solução de adoção de animais de estimação beneficiaria várias partes in
 # 5. CICLO DE DESENVOLVIMENTO DA SOLUÇÃO
 
 Para o desenvolvimento de uma solução como o AdoPet, que envolve a criação de um sistema web com múltiplos perfis de usuário e funcionalidades complexas, uma abordagem ágil de desenvolvimento de software é a mais apropriada. A metodologia ágil permite uma flexibilidade maior para lidar com mudanças de requisitos e incorporar feedback contínuo dos usuários, o que é fundamental para uma solução que pode evoluir com base nas necessidades em constante mudança dos adotantes e doadores de animais. A metodologia ágil escolhida foi o Scrum. Scrum é uma estrutura de desenvolvimento ágil que enfatiza a colaboração, a entrega iterativa e a adaptação contínua. "The Scrum Guide" (Guia Scrum) (https://www.scrum.org/resources/scrum-guide).
-É importante adaptar a metodologia escolhida às necessidades específicas do projeto AdoPet para garantir que a solução atenda às expectativas e necessidades de todos os envolvidos.
+É importante adaptar a metodologia escolhida às necessidades específicas do projeto AdoPet para garantir que a solução atenda às expectativas e necessidades.
 
 ## 1. Planejamento Inicial:
 
@@ -122,7 +122,7 @@ Para o desenvolvimento de uma solução como o AdoPet, que envolve a criação d
 
 ## 2. Design e Prototipagem:
 
-•	Criação de wireframes e protótipos da interface do usuário.
+•	Criação de mockups e protótipos da interface do usuário.
 
 •	Design de logotipo e identidade visual.
 

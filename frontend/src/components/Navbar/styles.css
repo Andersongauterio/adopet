@@ -6,3 +6,7 @@
 .adopet-navbat-logo {
     color: #FFFF;
 }
+
+.adopet-navbar-buttons button {
+	margin-right: 15px;
+}

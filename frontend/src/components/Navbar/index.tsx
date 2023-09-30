@@ -9,6 +9,10 @@ const Navbar = () => {
                 <Link to="/" className="adopet-navbat-logo">
                     <h4>Logo</h4>
                 </Link>
+                <div className="adopet-navbar-buttons">
+                    <button className="btn btn-secondary">Cadastre-se</button>
+                    <button className="btn btn-secondary">Fazer login</button>
+                </div>
             </div>
         </nav>
     );

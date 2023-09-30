@@ -1,0 +1,17 @@
+.adopet-petlist-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden; /* Hide horizontal overflow */
+}
+
+.adopet-petlist-filter {
+    background-color: #CFB388;
+    width: 20%;
+    height: 100vh;
+}
+
+.adopet-petlist-list {
+    width: 80%;
+    padding: 10px;
+    background-color: var(--background-color);
+}

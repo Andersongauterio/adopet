@@ -11,6 +11,7 @@
   --grey-light-125-color: #a7acb0;
   --grey-light-150-color: #949494;
   --btn-background-color:  #AD8A56;
+  --background-color: #EEE2D0;
 }
 
 h1,
@@ -57,4 +58,9 @@ a:hover {
 
 textarea {
   min-height: 150px; /* adjust this value to fit your design */
+}
+
+body {
+  margin: 0;
+  padding: 0;
 }

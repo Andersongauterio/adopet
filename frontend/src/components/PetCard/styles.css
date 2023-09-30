@@ -1,8 +1,6 @@
 .pet-card-container {
   border-radius: 10px;
   height: 300px;
-  width: 300px;
-  margin: 10px;
   border: solid 2px var(--grey-light-150-color);
 }
 

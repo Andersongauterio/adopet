@@ -1,0 +1,38 @@
+.adopet-filter-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px #9C824F solid;
+  padding: 5px;
+  margin: 0 10px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.adopet-filter-button {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.btn-adopet-filter {
+  width: 200px;
+  height: 50px;
+}
+
+.adopet-filter-filters {
+  padding: 5px;
+}
+
+.adopet-filter-header {
+  color: #65522F;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.adopet-select-filter-control {
+  margin-bottom: 5px;
+}

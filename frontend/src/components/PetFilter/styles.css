@@ -12,8 +12,12 @@
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
   margin-bottom: 10px;
+}
+
+.adopet-filter-button button {
+  background-color: #AD8A56;
+  border: none;
 }
 
 .btn-adopet-filter {
@@ -34,5 +38,33 @@
 }
 
 .adopet-select-filter-control {
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
+
+.adopet-select-filter-input-age {
+  width: 100px;
+  height: 40px;
+}
+
+.adopet-select-filter-control-age {
+  display: flex;
+  flex-direction: column;
+}
+
+.adopet-select-filter-control-inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.adopet-filter-select__control {
+	font-size: 1em;
+	letter-spacing: -0.015em;
+	color: #263238;
+	border: none !important;
+	border-bottom: 1px solid #E1E1E1 !important;
+  }
+  
+  .adopet-filter-select__placeholder {
+	color: #9E9E9E !important;
+  }

@@ -4,6 +4,7 @@ import PetCard from "../PetCard";
 import Modal from 'react-modal';
 import PetCardDetails from "../PetCardDetails";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
 const PetsList = () => {
 
@@ -84,7 +85,9 @@ const PetsList = () => {
       <div className="row">
         {pets.map(pet => (
           <div className="col-sm-12s col-lg-5 col-xl-4 pets-list-container-card" key={pet.id}>
-            <PetCard pet={pet} onClick={() => handlePetCardClick(pet)} />
+            <Link to="/petCardDetails/1">
+              <PetCard pet={pet} onClick={() => handlePetCardClick(pet)} />
+            </Link>
           </div>
         ))}
       </div>

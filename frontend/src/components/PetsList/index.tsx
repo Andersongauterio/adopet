@@ -34,6 +34,42 @@ const PetsList = () => {
       size: "G",
       imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg",
       cidade: "Dois Irmãos/RS"
+    },
+    {
+      id: 5,
+      name: "Marley",
+      telefone: 51984322799,
+      description: "Pet muito querido buscando um lar",
+      size: "G",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg",
+      cidade: "Dois Irmãos/RS"
+    },
+    {
+      id: 4,
+      name: "Marley",
+      telefone: 51984322799,
+      description: "Pet muito querido buscando um lar",
+      size: "G",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg",
+      cidade: "Dois Irmãos/RS"
+    },
+    {
+      id: 6,
+      name: "Marley",
+      telefone: 51984322799,
+      description: "Pet muito querido buscando um lar",
+      size: "G",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg",
+      cidade: "Dois Irmãos/RS"
+    },
+    {
+      id: 7,
+      name: "Marley",
+      telefone: 51984322799,
+      description: "Pet muito querido buscando um lar",
+      size: "G",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg",
+      cidade: "Dois Irmãos/RS"
     }
   ];
 
@@ -47,7 +83,7 @@ const PetsList = () => {
     <div className="pets-list-container">
       <div className="row">
         {pets.map(pet => (
-          <div className="col-sm-12s col-lg-5 col-xl-4" key={pet.id}>
+          <div className="col-sm-12s col-lg-5 col-xl-4 pets-list-container-card" key={pet.id}>
             <PetCard pet={pet} onClick={() => handlePetCardClick(pet)} />
           </div>
         ))}

@@ -1,3 +1,7 @@
 .pets-list-container {
     background-color: var(--background-color);
 }
+
+.pets-list-container-card {
+    margin-bottom: 15px;
+}

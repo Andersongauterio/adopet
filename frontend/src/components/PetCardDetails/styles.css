@@ -5,9 +5,15 @@
   justify-content: center;
 }
 
+.pet-card-details-img-main-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .pet-card-details-img-container {
   background-color: #EEE2D0;
-  width: 40%;
+  width: 500px;
   height: auto;
   margin: 30px;
   padding: 10px;
@@ -20,21 +26,27 @@
 .pet-card-details-text {
   border: #EEE2D0 1px solid;
   border-radius: 10px;
-  width: 40%;
+  width: 600px;
   height: auto;
   margin: 30px;
   padding: 10px;
 }
 
-.pet-card-details-img-others {
+.pet-card-details-img-cards {
   margin-top: 5px;
+  display: flex;
+  flex-direction: row;
 }
 
-.pet-card-details-img-others img {
+.pet-card-details-img-card {
+  border: 1px black solid;
+}
+
+.pet-card-details-img-cards img {
   width: 90px;
   height: auto;
 }
 
 .pet-card-details-img-main {
-  height: 200px;
+  margin: 10px 50px;
 }

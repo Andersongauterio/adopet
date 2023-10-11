@@ -1,0 +1,73 @@
+.adopet-form-pet-cadastro-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.adopet-form-pet-cadastro-fields {
+  border: 1px #EEE2D0 solid;
+  border-radius: 5px;
+  margin-right: 15px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.adopet-form-pet-cadastro-field-add-img {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.adopet-form-pet-cadastro-field-add-img svg {
+  margin-right: 10px;
+}
+
+.adopet-form-pet-cadastro-part-1 {
+  margin-right: 20px;
+}
+
+.adopet-form-pet-cadastro-imgs {
+  border: 1px #EEE2D0 solid;
+  border-radius: 5px;
+  margin-left: 15px;
+  padding: 10px;
+}
+
+.adopet-form-pet-cadastro-field {
+  margin-bottom: 10px;
+}
+
+.adopet-form-pet-cadastro-field button {
+  width: 300px;
+  height: 50px;
+  margin-top: 30px;
+}
+
+.adopet-form-pet-cadastro-field input {
+  height: 40px;
+  width: 300px;
+  border-radius: 5px;
+}
+
+.adopet-form-pet-cadastro-field textarea {
+  width: 300px;
+  border-radius: 5px;
+}
+
+.adopet-form-pet-cadastro-select select {
+  height: 20px;
+}
+
+.adopet-form-pet-cadastro-select__control {
+  font-size: 1em;
+  letter-spacing: -0.015em;
+  color: #263238;
+  border: none !important;
+  height: 10px;
+}
+
+.adopet-form-pet-cadastro-select__placeholder {
+  color: #9E9E9E !important;
+}

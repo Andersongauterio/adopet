@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Pet } from "../../types/pet";
 import PetCard from "../PetCard";
-import Modal from 'react-modal';
-import PetCardDetails from "../PetCardDetails";
 import "./styles.css";
 import { Link } from "react-router-dom";
 

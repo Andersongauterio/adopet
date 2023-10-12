@@ -1,5 +1,6 @@
 import Select from 'react-select';
 import { ReactComponent as AddIcon } from '../../assets/images/add.svg';
+import { PetImgs } from '../../types/petImgs';
 import './styles.css';
 
 const especies = [
@@ -42,6 +43,40 @@ const handleChangeTamanho = () => {
 };
 
 const FormPetCadastro = () => {
+
+  const petImgs: PetImgs[] = [
+    {
+      pet_id: 1,
+      img_id: 1,
+      name: "Imagem 1",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
+    },
+    {
+      pet_id: 1,
+      img_id: 2,
+      name: "Imagem 2",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
+    },
+    {
+      pet_id: 1,
+      img_id: 3,
+      name: "Imagem 3",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
+    },
+    {
+      pet_id: 1,
+      img_id: 4,
+      name: "Imagem 4",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
+    },
+    {
+      pet_id: 1,
+      img_id: 5,
+      name: "Imagem 5",
+      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
+    }
+  ]
+
   return (
     <div className='adopet-form-pet-cadastro-container'>
       <form action="#">
@@ -103,13 +138,17 @@ const FormPetCadastro = () => {
               <h5>Imagem</h5>
             </div>
             <div className='adopet-form-pet-cadastro-field'>
-            <button className='btn btn-secondary'>salvar</button>
+              <button className='btn btn-secondary'>salvar</button>
             </div>
           </div>
         </div>
       </form>
       <div className='adopet-form-pet-cadastro-imgs'>
-        <h1>imgs</h1>
+        {petImgs.map(imgs => (
+          <div className="adopet-form-pet-cadastro-img" key={imgs.img_id}>
+              <img src={imgs.imgUrl} alt={imgs.name} />
+          </div>
+        ))} 
       </div>
     </div>
   )

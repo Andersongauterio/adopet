@@ -1,0 +1,11 @@
+.adopet-adote-container {
+    background-color: #9C824F;
+    padding: 5px;
+    margin: 20px 50px;
+    border-radius: 5px;
+    min-height: calc(100vh - 320px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

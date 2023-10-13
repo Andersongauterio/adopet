@@ -16,10 +16,15 @@ const PetCard = ({ pet, onClick }: Props) => {
       <div className="pet-card-img">
         <img src={pet.imgUrl} alt="Imagem do pet" />
       </div>
-      <div className="pet-card-info">
-        <h5>Nome: {pet.name}</h5>
-        <h5>Telefone: {pet.telefone}</h5>
-        <h5>Cidade: {pet.cidade}</h5>
+      <div className="pet-card-infos">
+        <div className="pet-card-info">
+          <h5>Nome: {pet.name}</h5>
+          <h5>Telefone: {pet.telefone}</h5>
+          <h5>Cidade: {pet.cidade}</h5>
+        </div>
+        <div className="pet-card-adote">
+          <button className="btn btn-secondary">Adote</button>
+        </div>
       </div>
     </div >
   );

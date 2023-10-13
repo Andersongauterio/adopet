@@ -5,6 +5,7 @@
   width: 350px;
   height: auto;
   background-color: #9C824F;
+  border: solid 1px #EEE2D0;
 }
 
 .pet-card-img {
@@ -15,6 +16,12 @@
   margin-bottom: 10px;
 }
 
+.pet-card-infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 .pet-card-info {
   padding: 10px;

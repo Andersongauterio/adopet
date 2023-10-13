@@ -67,3 +67,7 @@
   .adopet-filter-select__placeholder {
 	color: #9E9E9E !important;
   }
+
+  .adopet-select-filter-control-inputs input {
+    border: none;
+  }

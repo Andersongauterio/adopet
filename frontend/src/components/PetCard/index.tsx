@@ -6,7 +6,7 @@ type Props = {
   pet: Pet;
 }
 
-const PetCard = ({ pet  }: Props) => {
+const PetCard = ({ pet }: Props) => {
 
   return (
     < div className="pet-card-container">

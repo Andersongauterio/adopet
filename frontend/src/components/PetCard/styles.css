@@ -35,3 +35,15 @@
   font-size: 14px;
   color: #FFFFFF;
 }
+
+.adopet-card-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.adopet-card-buttons button {
+  height: 30px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}

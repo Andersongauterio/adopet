@@ -72,20 +72,12 @@ const PetsList = () => {
     }
   ];
 
-  const [selectedPet, setSelectedPet] = useState<Pet | null>(null);
-
-  const handlePetCardClick = (pet: Pet) => {
-    setSelectedPet(pet);
-  };
-
   return (
     <div className="pets-list-container">
       <div className="row">
         {pets.map(pet => (
           <div className="col-sm-12s col-lg-5 col-xl-4 pets-list-container-card" key={pet.id}>
-            <Link to="/petCardDetails/1">
-              <PetCard pet={pet} onClick={() => handlePetCardClick(pet)} />
-            </Link>
+            <PetCard pet={pet} />
           </div>
         ))}
       </div>

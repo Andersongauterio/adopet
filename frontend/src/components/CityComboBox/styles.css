@@ -1,0 +1,11 @@
+.adopet-combo-box-city-select__control {
+	font-size: 1em;
+	letter-spacing: -0.015em;
+	color: #263238;
+	border: none !important;
+	border-bottom: 1px solid #E1E1E1 !important;
+  }
+  
+  .adopet-combo-box-city-select__placeholder {
+	color: #9E9E9E !important;
+  }

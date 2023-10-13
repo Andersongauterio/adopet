@@ -21,7 +21,7 @@ const PetCard = ({ pet  }: Props) => {
         </div>
         <div className="adopet-card-buttons">
           <div className="pet-card-adote">
-            <Link to={"/"}>
+            <Link to={`/adotar/${pet.id}`}>
               <button className="btn btn-secondary">Adote</button>
             </Link>
           </div>

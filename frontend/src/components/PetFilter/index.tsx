@@ -1,5 +1,6 @@
 import "./styles.css";
 import Select from 'react-select';
+import CityComboBox from "../CityComboBox";
 
 const especies = [
   { label: 'Cachorro', value: 'cachorro' },
@@ -18,12 +19,6 @@ const tamanhos = [
   { label: 'Pequeno', value: 'pequeno' },
 ];
 
-const cidades = [
-  { label: 'Dois Irmãos', value: 'dois irmaos' },
-  { label: 'Novo Hamburgo', value: 'novo hamburgo' },
-  { label: 'Porto Alegre', value: 'poorto alegre' },
-];
-
 const handleChangeEspecie = () => {
   console.log('Change especie')
 };
@@ -36,10 +31,6 @@ const handleChangeTamanho = () => {
   console.log('Change tamanho')
 }
 
-const handleChangeCidade = () => {
-  console.log('Change cidade')
-}
-
 const PetFilter = () => {
 
   return (
@@ -48,7 +39,6 @@ const PetFilter = () => {
         <h3>Filtros</h3>
       </div>
       <div className="adopet-filter-filters">
-      <label className="base-label">Espécie</label>
         <div className="adopet-select-filter-control">
           <Select
             options={especies}
@@ -59,8 +49,7 @@ const PetFilter = () => {
             classNamePrefix="adopet-filter-select"
           />
         </div>
-        <label className="base-label">Gênero</label>
-        <div className="adopet-select-filter-control">
+          <div className="adopet-select-filter-control">
           <Select
             options={generos}
             isClearable
@@ -71,14 +60,13 @@ const PetFilter = () => {
           />
         </div>
         <div className="adopet-select-filter-control adopet-select-filter-control-age">
-          <label className="base-label">Idade</label>
+          <label className="base-label">Idade:</label>
           <div className="adopet-select-filter-control-inputs">
             <input placeholder="De" type="number" name="from" className="base-input adopet-select-filter-input-age"/>
             <input placeholder="Até" type="number" name="to" className="base-input adopet-select-filter-input-age"/>
           </div>
         </div>
         <div className="adopet-select-filter-control">
-        <label className="base-label">Tamanho</label>
           <Select
             options={tamanhos}
             isClearable
@@ -89,15 +77,7 @@ const PetFilter = () => {
           />
         </div>
         <div className="adopet-select-filter-control">
-        <label className="base-label">Cidade</label>
-          <Select
-            options={cidades}
-            isClearable
-            placeholder="Cidade"
-            onChange={handleChangeCidade}
-            isMulti={false}
-            classNamePrefix="adopet-filter-select"
-          />
+          <CityComboBox />
         </div>
       </div>
       <div className="adopet-filter-button">

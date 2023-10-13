@@ -1,0 +1,46 @@
+.adopet-form-adocao-container {
+  border: 1px solid #EEE2D0;
+  border-radius: 5px;
+  width: 600px;
+  height: 50vh;
+  padding: 30px 20px;
+}
+
+.adopet-form-adocao-input {
+  margin-bottom: 10px;
+}
+
+.adopet-form-adocao-input input {
+  width: 400px;
+  border: none;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.adopet-form-adocao-select {
+  width: 400px;
+}
+
+.adopet-form-adocao-input textarea {
+  width: 400px;
+  border: none;
+}
+
+.adopet-form-adocao-input textarea::placeholder {
+  color: #9E9E9E;
+}
+
+.adopet-form-adocao-footer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.adopet-form-adocao-button {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.adopet-form-adocao-button button {
+  width: 150px;
+}

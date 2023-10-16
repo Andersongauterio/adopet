@@ -12,7 +12,9 @@ const HeroCard = () => {
         <Link to="/petList">
           <button className='btn btn-primary'>Quero Adotar</button>
         </Link>
-        <button className='btn btn-primary'>Colocar para adoção</button>
+        <Link to={"/petCadastro"}>
+          <button className='btn btn-primary'>Colocar para adoção</button>
+        </Link>
       </div>
     </div>
   );

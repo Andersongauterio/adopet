@@ -9,3 +9,7 @@
 .adopet-navbar-buttons button {
 	margin-right: 15px;
 }
+
+.adopet-navbar-buttons svg {
+    margin-right: 15px;
+}

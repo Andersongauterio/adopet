@@ -15,10 +15,12 @@
 .adopet-hero-card-buttons {
   display: flex;
   flex-direction: row;
-  margin-top: 20px;
-  justify-content: center;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.adopet-hero-card-buttons button{
-  margin-right: 15px;
+.adopet-hero-card-buttons button {
+  width: 280px;
+  height: 50px;
 }

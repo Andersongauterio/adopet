@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { ReactComponent as MessageIcon } from '../../assets/images/message.svg';
 import "./styles.css";
 
 const Navbar = () => {
@@ -14,6 +15,9 @@ const Navbar = () => {
           <button className="btn btn-secondary">Fazer login</button>
           <Link to={"/userArea/1"}>
             <button className="btn btn-secondary">Área do usuário</button>
+          </Link>
+          <Link to={"/messages"}>
+            <MessageIcon />
           </Link>
         </div>
       </div>

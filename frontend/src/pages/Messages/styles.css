@@ -1,0 +1,8 @@
+.adopet-messages-container {
+    background-color: #9C824F;
+    min-height: calc(100vh - 320px);
+    margin: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+}

@@ -1,3 +1,4 @@
+import MessagesByUser from '../../components/MessagesByUser';
 import UserMessages from '../../components/UserMessages';
 import './styles.css';
 
@@ -8,7 +9,7 @@ const Messages = () => {
         <UserMessages />
       </div>
       <div className='adopet-messages-byuser'>
-        <h1>Messages by user</h1>
+        <MessagesByUser />
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
-.adopet-user-messages-container {
+.adopet-message-by-user-container {
   border: 1px solid #EEE2D0;
   border-radius: 5px;
-  width: calc(60vh);
-  margin: 15px;
   height: 80%;
+  width: calc(120vh);
+  margin: 15px;
   padding: 15px;
 }

@@ -1,8 +1,9 @@
 export interface CreatePetDTO {
+  id: number;
   name: string;
+  phone: number;
   description: string;
-  birth_date: string;
-  type: string;
   size: string;
-  include_date: string;
+  user_id: number;
+  city_id: number;
 }

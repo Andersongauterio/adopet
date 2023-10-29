@@ -9,14 +9,25 @@ export class CreateTables1697935531291 implements MigrationInterface {
             name VARCHAR(255) NOT NULL,
             phone NUMERIC NOT NULL,
             login VARCHAR(255) NOT NULL,
-            password VARCHAR(255) NOT NULL
+            password VARCHAR(255) NOT NULL,
+            created_at timestamp without time zone DEFAULT now() NOT NULL,
+            updated_at timestamp without time zone DEFAULT now() NOT NULL
         );
     `);
 
     await queryRunner.query(`
+    CREATE TABLE estates (
+        uf VARCHAR(2) PRIMARY KEY,
+        name VARCHAR(255) NOT NULL
+    );
+`);
+
+
+    await queryRunner.query(`
         CREATE TABLE cities (
             id serial PRIMARY KEY,
-            name VARCHAR(255) NOT NULL
+            name VARCHAR(255) NOT NULL,
+            uf VARCHAR(255) NOT NULL
         );
     `);
 
@@ -47,7 +58,8 @@ export class CreateTables1697935531291 implements MigrationInterface {
             rec_user_id INT REFERENCES users (id),
             sender_user_id INT REFERENCES users (id),
             msg TEXT NOT NULL,
-            date VARCHAR(255) NOT NULL
+            created_at timestamp without time zone DEFAULT now() NOT NULL,
+            updated_at timestamp without time zone DEFAULT now() NOT NULL
         );
     `);
 
@@ -56,7 +68,9 @@ export class CreateTables1697935531291 implements MigrationInterface {
             id serial PRIMARY KEY,
             pet_id INT REFERENCES pets (id),
             user_id INT REFERENCES users (id),
-            message_ID INT REFERENCES msgs (id)
+            message_ID INT REFERENCES msgs (id),
+            created_at timestamp without time zone DEFAULT now() NOT NULL,
+            updated_at timestamp without time zone DEFAULT now() NOT NULL
         );
     `);
   }

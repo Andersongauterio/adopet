@@ -39,7 +39,9 @@ export class CreateTables1697935531291 implements MigrationInterface {
             description TEXT NOT NULL,
             size VARCHAR(255) NOT NULL,
             user_id INT REFERENCES users (id),
-            city_id INT REFERENCES cities (id)
+            city_id INT REFERENCES cities (id),
+            created_at timestamp without time zone DEFAULT now() NOT NULL,
+            updated_at timestamp without time zone DEFAULT now() NOT NULL
         );
     `);
 

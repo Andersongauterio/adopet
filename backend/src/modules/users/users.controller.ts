@@ -17,6 +17,11 @@ export class UsersController {
     return this.usersService.findUserById(id);
   }
 
+  @Get()
+  async getAllUsers(): Promise<UserEntity[]> {
+    return this.usersService.getAllUsers();
+  }
+
   @Put(':id')
   update(@Param('id') id: number, @Body() updateUserDto: CreateUserDto): Promise<UserEntity | undefined> {
     return this.usersService.updateUser(id, updateUserDto);

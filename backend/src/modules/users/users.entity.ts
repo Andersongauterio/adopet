@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Msg } from '../adoption-messages/msgs.entity';
 import { Pet } from '../pets/pets.entity';
 
 @Entity({ name: 'users' })
@@ -26,4 +27,10 @@ export class User {
 
   @OneToMany(() => Pet, (pet) => pet.user)
   pets: Pet[];
+
+  @OneToMany(() => Msg, (msg) => msg.senderUser)
+  sentMsgs: Msg[];
+
+  @OneToMany(() => Msg, (msg) => msg.recUser)
+  receivedMsgs: Msg[];
 }

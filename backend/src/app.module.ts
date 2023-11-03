@@ -6,7 +6,7 @@ import { UserModule } from './modules/users/user.module';
 import { CitiesModule } from './modules/cities/cities.module';
 import { StatesModule } from './modules/states/states.module';
 import { PetImgsModule } from './modules/pet-imgs/pet-imgs.module';
-import { AdptionMessagesModule } from './modules/adption-messages/adption-messages.module';
+import { AdoptionMessagesModule } from './modules/adoption-messages/adoption-messages.module';
 import { AdptionFormsModule } from './modules/adption-forms/adption-forms.module';
 
 @Module({
@@ -30,8 +30,8 @@ import { AdptionFormsModule } from './modules/adption-forms/adption-forms.module
     CitiesModule,
     StatesModule,
     PetImgsModule,
-    AdptionMessagesModule,
+    AdoptionMessagesModule,
     AdptionFormsModule,
-  ],
+  ]
 })
 export class AppModule {}

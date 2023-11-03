@@ -1,7 +1,9 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Cities } from "../cities/cities.entity";
+import { User } from "../users/users.entity";
 
 @Entity({ name: 'pets' })
-export class PetEntity {
+export class Pet {
   @PrimaryGeneratedColumn('rowid')
   id: number;
 
@@ -17,8 +19,13 @@ export class PetEntity {
   @Column({ name: 'size', nullable: true })
   size: string;
 
-  @Column({ name: 'user_id', nullable: false })
-  user_id: number;
+  @ManyToOne(() => User, (user) => user.pets)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
+
+  @ManyToOne(() => Cities, (city) => city.pets)
+  @JoinColumn({ name: 'city_id' })
+  city: Cities;
 
   @Column({ name: 'city_id', nullable: false })
   city_id: number;

@@ -2,30 +2,30 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOneOptions, Repository } from 'typeorm';
 import { CreateUserDto } from './dtos/createUser.dto';
-import { UserEntity } from './users.entity';
+import { User } from './users.entity';
 
 @Injectable()
 export class UsersService {
 
     constructor(
-        @InjectRepository(UserEntity)
-        private userRepository: Repository<UserEntity>,
+        @InjectRepository(User)
+        private userRepository: Repository<User>,
       ) {}
     
-      async createUser(createUserDto: CreateUserDto): Promise<UserEntity> {
+      async createUser(createUserDto: CreateUserDto): Promise<User> {
         return await this.userRepository.save(createUserDto);
       }
 
-      async getAllUsers(): Promise<UserEntity[]> {
+      async getAllUsers(): Promise<User[]> {
         return this.userRepository.find();
       }
     
-      async findUserById(id: number): Promise<UserEntity | undefined> {
-        return await this.userRepository.findOne({ id: id } as FindOneOptions<UserEntity>);
+      async findUserById(id: number): Promise<User | undefined> {
+        return await this.userRepository.findOne({ id: id } as FindOneOptions<User>);
       }
 
-      async updateUser(id: number, updateUserDto: CreateUserDto): Promise<UserEntity | undefined> {
-        const user = await this.userRepository.findOne({ id: id } as FindOneOptions<UserEntity>);
+      async updateUser(id: number, updateUserDto: CreateUserDto): Promise<User | undefined> {
+        const user = await this.userRepository.findOne({ id: id } as FindOneOptions<User>);
         if (!user) {
           return undefined; 
         }
@@ -37,7 +37,7 @@ export class UsersService {
       }
 
       async removeUser(id: number): Promise<void> {
-        const user = await  this.userRepository.findOne({ id: id } as FindOneOptions<UserEntity>);
+        const user = await  this.userRepository.findOne({ id: id } as FindOneOptions<User>);
         if (user) {
           await this.userRepository.remove(user);
         }

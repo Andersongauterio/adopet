@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { Pet } from '../pets/pets.entity';
 
-@Entity()
+@Entity( {name: "imgs" } )
 export class PetImgs {
   @PrimaryGeneratedColumn()
   id: number;

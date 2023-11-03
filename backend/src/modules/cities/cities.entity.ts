@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'ty
 import { Pet } from '../pets/pets.entity';
 import { State } from '../states/states.entity';
 
-@Entity()
+@Entity({ name: "cities" })
 export class Cities {
   @PrimaryGeneratedColumn()
   id: number;

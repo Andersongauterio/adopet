@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { Msg } from '../adoption-messages/msgs.entity';
+import { AdoptionForm } from '../adption-forms/adoptionForm.entity';
 import { Pet } from '../pets/pets.entity';
 
 @Entity({ name: 'users' })
@@ -33,4 +34,7 @@ export class User {
 
   @OneToMany(() => Msg, (msg) => msg.recUser)
   receivedMsgs: Msg[];
+
+  @OneToMany(() => AdoptionForm, (adoptionForm) => adoptionForm.user)
+  adoptionForms: AdoptionForm[];
 }

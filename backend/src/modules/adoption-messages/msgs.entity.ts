@@ -1,7 +1,8 @@
+import { AdoptionForm } from './../adption-forms/adoptionForm.entity';
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 import { User } from '../users/users.entity';
 
-@Entity()
+@Entity({ name: 'msgs' })
 export class Msg {
   @PrimaryGeneratedColumn()
   id: number;
@@ -13,6 +14,9 @@ export class Msg {
   @ManyToOne(() => User, (user) => user.receivedMsgs)
   @JoinColumn({ name: 'rec_user_id' })
   recUser: User;
+
+  @ManyToOne(() => AdoptionForm, (adoptionForm) => adoptionForm.message)
+  adoptionForm: AdoptionForm;
 
   @Column('text')
   msg: string;

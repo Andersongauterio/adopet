@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { AdoptionForm } from "../adption-forms/adoptionForm.entity";
 import { Cities } from "../cities/cities.entity";
 import { PetImgs } from "../pet-imgs/petImgs.entity";
 import { User } from "../users/users.entity";
@@ -30,6 +31,9 @@ export class Pet {
 
   @OneToMany(() => PetImgs, (img) => img.pet)
   imgs: PetImgs[];
+
+  @OneToMany(() => AdoptionForm, (adoptionForm) => adoptionForm.pet)
+  adoptionForms: AdoptionForm[];
 
   @CreateDateColumn({ name: 'created_at'})
   createAt: Date;

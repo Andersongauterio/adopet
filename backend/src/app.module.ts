@@ -7,7 +7,7 @@ import { CitiesModule } from './modules/cities/cities.module';
 import { StatesModule } from './modules/states/states.module';
 import { PetImgsModule } from './modules/pet-imgs/pet-imgs.module';
 import { AdoptionMessagesModule } from './modules/adoption-messages/adoption-messages.module';
-import { AdptionFormsModule } from './modules/adption-forms/adption-forms.module';
+import { AdoptionFormsModule } from './modules/adoption-forms/adoption-forms.module';
 
 @Module({
   imports: [
@@ -31,7 +31,7 @@ import { AdptionFormsModule } from './modules/adption-forms/adption-forms.module
     StatesModule,
     PetImgsModule,
     AdoptionMessagesModule,
-    AdptionFormsModule,
+    AdoptionFormsModule,
   ]
 })
 export class AppModule {}

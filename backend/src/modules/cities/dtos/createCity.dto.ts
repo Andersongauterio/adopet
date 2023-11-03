@@ -1,12 +1,12 @@
 import { IsNotEmpty, IsString, Length } from 'class-validator';
 
-export class CreateEstateDto {
+export class CreateCityDto {
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
   @IsString()
   @IsNotEmpty()
   @Length(2, 2)
   uf: string;
-
-  @IsString()
-  @IsNotEmpty()
-  name: string;
 }

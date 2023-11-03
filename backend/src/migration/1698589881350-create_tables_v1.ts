@@ -16,7 +16,7 @@ export class CreateTables1697935531291 implements MigrationInterface {
     `);
 
     await queryRunner.query(`
-    CREATE TABLE estates (
+    CREATE TABLE states (
         uf VARCHAR(2) PRIMARY KEY,
         name VARCHAR(255) NOT NULL
     );

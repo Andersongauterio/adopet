@@ -4,7 +4,7 @@ import { PetsModule } from './modules/pets/pets.module';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './modules/users/user.module';
 import { CitiesModule } from './modules/cities/cities.module';
-import { EstatesModule } from './modules/estates/estates.module';
+import { StatesModule } from './modules/states/states.module';
 import { PetImgsModule } from './modules/pet-imgs/pet-imgs.module';
 import { AdptionMessagesModule } from './modules/adption-messages/adption-messages.module';
 import { AdptionFormsModule } from './modules/adption-forms/adption-forms.module';
@@ -28,7 +28,7 @@ import { AdptionFormsModule } from './modules/adption-forms/adption-forms.module
     PetsModule,
     UserModule,
     CitiesModule,
-    EstatesModule,
+    StatesModule,
     PetImgsModule,
     AdptionMessagesModule,
     AdptionFormsModule,

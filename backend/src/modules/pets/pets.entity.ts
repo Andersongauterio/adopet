@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { AdoptionForm } from "../adoption-forms/adoptionForm.entity";
 import { Cities } from "../cities/cities.entity";
 import { PetImgs } from "../pet-imgs/petImgs.entity";
 import { User } from "../users/users.entity";
@@ -20,6 +21,12 @@ export class Pet {
   @Column({ name: 'size', nullable: true })
   size: string;
 
+  @CreateDateColumn({ name: 'created_at'})
+  createAt: Date;
+
+  @UpdateDateColumn({ name: 'updated_at'})
+  updateAt: Date;
+
   @ManyToOne(() => User, (user) => user.pets)
   @JoinColumn({ name: 'user_id' })
   user: User;
@@ -31,9 +38,7 @@ export class Pet {
   @OneToMany(() => PetImgs, (img) => img.pet)
   imgs: PetImgs[];
 
-  @CreateDateColumn({ name: 'created_at'})
-  createAt: Date;
+  @OneToMany(() => AdoptionForm, (adoptionForm) => adoptionForm.pet)
+  adoptionForms: AdoptionForm[];
 
-  @UpdateDateColumn({ name: 'updated_at'})
-  updateAt: Date;
 }

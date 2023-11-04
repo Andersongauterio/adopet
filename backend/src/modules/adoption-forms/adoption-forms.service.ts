@@ -13,9 +13,9 @@ export class AdoptionFormsService {
 
   async create(createAdoptionFormDto: CreateAdoptionFormDto): Promise<AdoptionForm> {
     const adoptionForm = new AdoptionForm();
-    adoptionForm.pet_id = createAdoptionFormDto.pet_id;
-    adoptionForm.user_id = createAdoptionFormDto.user_id;
-    adoptionForm.message_ID 
+    adoptionForm.pet.id = createAdoptionFormDto.pet_id;
+    adoptionForm.user.id = createAdoptionFormDto.user_id;
+    adoptionForm.message.id;
 
     return this.adoptionFormRepository.save(adoptionForm);
   }

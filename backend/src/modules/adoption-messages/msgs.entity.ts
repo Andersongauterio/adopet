@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { AdoptionForm } from '../adoption-forms/adoptionForm.entity';
 import { User } from '../users/users.entity';
 
 @Entity({ name: 'msgs' })
@@ -22,4 +23,7 @@ export class Msg {
 
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updatedAt: Date;
+
+  @OneToMany(() => AdoptionForm, (adoptionForm) => adoptionForm.message)
+  adoptionForms: AdoptionForm[];
 }

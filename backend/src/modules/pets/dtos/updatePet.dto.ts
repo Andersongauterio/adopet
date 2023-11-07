@@ -1,6 +1,7 @@
 export class UpdatePetDto {
   name: string;
-  phone: number;
   description: string;
+  type: string;
+  gender: string;
   size: string;
 }

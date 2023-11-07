@@ -12,14 +12,17 @@ export class Pet {
   @Column({ name: 'name', nullable: false })
   name: string;
 
-  @Column({ name: 'phone', nullable: true })
-  phone: number;
-
-  @Column({ name: 'description', nullable: false })
+  @Column({ type: 'text' })
   description: string;
 
   @Column({ name: 'size', nullable: true })
   size: string;
+
+  @Column({ type: 'varchar', length: 255 })
+  gender: string;
+
+  @Column({ type: 'varchar', length: 255 })
+  type: string;
 
   @CreateDateColumn({ name: 'created_at'})
   createAt: Date;

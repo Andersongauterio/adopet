@@ -6,7 +6,7 @@ const UserMenu = () => {
     <div className='adopet-usermenu-container'>
       <div className='adopet-usermenu-buttons'>
         <Link to={"/petCadastro"}>
-          <button className='btn btn-secondary'>Cadastrar Pet</button>
+          <button className='btn btn-secondary'>Cadastrar Pet para adoção</button>
         </Link>
         <button className='btn btn-secondary'>Minhas mensagens</button>
       </div>

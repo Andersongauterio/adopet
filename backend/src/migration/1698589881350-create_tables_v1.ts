@@ -35,9 +35,10 @@ export class CreateTables1697935531291 implements MigrationInterface {
         CREATE TABLE pets (
             id serial PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
-            phone NUMERIC NOT NULL,
             description TEXT NOT NULL,
             size VARCHAR(255) NOT NULL,
+            gender VARCHAR(255) NOT NULL,
+            type VARCHAR(255) NOT NULL,
             user_id INT REFERENCES users (id),
             city_id INT REFERENCES cities (id),
             created_at timestamp without time zone DEFAULT now() NOT NULL,

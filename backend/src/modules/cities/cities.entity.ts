@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 import { Pet } from '../pets/pets.entity';
 import { State } from '../states/states.entity';
 
@@ -11,6 +11,7 @@ export class Cities {
   name: string;
 
   @ManyToOne(() => State, (state) => state.cities)
+  @JoinColumn({ name: 'uf', referencedColumnName: 'uf' })
   state: State;
 
   @OneToMany(() => Pet, (pet) => pet.city)

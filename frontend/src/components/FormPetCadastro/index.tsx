@@ -1,18 +1,13 @@
+import { useState } from 'react';
 import Select from 'react-select';
 import { ReactComponent as AddIcon } from '../../assets/images/add.svg';
 import { PetImgs } from '../../types/petImgs';
 import './styles.css';
 
-const especies = [
+const type = [
   { label: 'Cachorro', value: 'cachorro' },
   { label: 'Gato', value: 'gato' },
   { label: 'Hamster', value: 'hamster' },
-];
-
-const cidades = [
-  { label: 'Dois Irmãos', value: 'dois irmaos' },
-  { label: 'Novo Hamburgo', value: 'novo hamburgo' },
-  { label: 'Porto Alegre', value: 'poorto alegre' },
 ];
 
 const generos = [
@@ -26,64 +21,100 @@ const tamanhos = [
   { label: 'Pequeno', value: 'pequeno' },
 ];
 
-const handleChangeCidade = () => {
-  console.log('Change cidade')
-};
-
-const handleChangeEspecie = () => {
-  console.log('Change especie')
-};
-
-const handleChangeGenero = () => {
-  console.log('Change especie')
-};
-
-const handleChangeTamanho = () => {
-  console.log('Change tamanho')
-};
+const cidades = [
+  { label: 'Dois Irmãos', value: '1' },
+  { label: 'Novo Hamburgo', value: '2' },
+  { label: 'Porto Alegre', value: '3' },
+];
 
 const FormPetCadastro = () => {
 
-  const petImgs: PetImgs[] = [
-    {
-      pet_id: 1,
-      img_id: 1,
-      name: "Imagem 1",
-      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
-    },
-    {
-      pet_id: 1,
-      img_id: 2,
-      name: "Imagem 2",
-      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
-    },
-    {
-      pet_id: 1,
-      img_id: 3,
-      name: "Imagem 3",
-      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
-    },
-    {
-      pet_id: 1,
-      img_id: 4,
-      name: "Imagem 4",
-      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
-    },
-    {
-      pet_id: 1,
-      img_id: 5,
-      name: "Imagem 5",
-      imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg"
+  interface FormData {
+    name: string;
+    description: string;
+    size: string;
+    gender: string;
+    type: string;
+    user_id: number;
+    city_id: number | null; // Allow both number and null
+  }
+
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    description: '',
+    size: '',
+    gender: '',
+    type: '',
+    user_id: 1,
+    city_id: null,
+  });
+
+  const handleChangeCidade = (selectedOption: any) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      city_id: selectedOption ? parseInt(selectedOption.value, 10) : null,
+    }));
+  };
+
+  const handleChangeType = (selectedOption: any) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      type: selectedOption ? selectedOption.value : null,
+    }));
+  };
+
+  const handleChangeTamanho = (selectedOption: any) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      size: selectedOption ? selectedOption.value : null,
+    }));
+  };
+  
+  const handleChangeGender = (selectedOption: any) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      gender: selectedOption ? selectedOption.value : null,
+    }));
+  };
+
+  const petImgs: PetImgs[] = []
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    // Your fetch call
+    try {
+      const response = await fetch('http://localhost:8080/pets', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+      } else {
+        console.error('Failed to post:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
-  ]
+  };
 
   return (
     <div className='adopet-form-pet-cadastro-container'>
-      <form action="#">
+      <form onSubmit={handleSubmit}>
         <div className='adopet-form-pet-cadastro-fields'>
           <div className='adopet-form-pet-cadastro-part-1'>
             <div className='adopet-form-pet-cadastro-field'>
-              <input name="name" id="name" type="text" placeholder='Nome:' />
+              <input name="name" value={formData.name} onChange={handleChange} id="name" type="text" placeholder='Nome:' />
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Select
@@ -93,14 +124,15 @@ const FormPetCadastro = () => {
                 onChange={handleChangeCidade}
                 isMulti={false}
                 classNamePrefix="adopet-form-pet-cadastro-select"
+                value={cidades.find(option => parseInt(option.value, 10) === formData.city_id)}
               />
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Select
-                options={especies}
+                options={type}
                 isClearable
                 placeholder="Espécies"
-                onChange={handleChangeEspecie}
+                onChange={handleChangeType}
                 isMulti={false}
                 classNamePrefix="adopet-form-pet-cadastro-select"
               />
@@ -118,7 +150,7 @@ const FormPetCadastro = () => {
                 options={generos}
                 isClearable
                 placeholder="Gênero"
-                onChange={handleChangeGenero}
+                onChange={ handleChangeGender }
                 isMulti={false}
                 classNamePrefix="adopet-form-pet-cadastro-select"
               />

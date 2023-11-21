@@ -6,25 +6,18 @@ import './styles.css';
 
 const type = [
   { label: 'Cachorro', value: 'cachorro' },
-  { label: 'Gato', value: 'gato' },
-  { label: 'Hamster', value: 'hamster' },
 ];
 
 const generos = [
   { label: 'Macho', value: 'macho' },
-  { label: 'Fêmea', value: 'femea' },
 ];
 
 const tamanhos = [
   { label: 'Grande', value: 'grande' },
-  { label: 'Médio', value: 'medio' },
-  { label: 'Pequeno', value: 'pequeno' },
 ];
 
 const cidades = [
   { label: 'Dois Irmãos', value: '1' },
-  { label: 'Novo Hamburgo', value: '2' },
-  { label: 'Porto Alegre', value: '3' },
 ];
 
 const FormPetCadastro = () => {
@@ -36,10 +29,10 @@ const FormPetCadastro = () => {
     gender: string;
     type: string;
     user_id: number;
-    city_id: number | null; // Allow both number and null
-  }
+    city_id: number | null;
+  };
 
-  const [formData, setFormData] = useState<FormData>({
+  const initialFormData: FormData = {
     name: '',
     description: '',
     size: '',
@@ -47,7 +40,19 @@ const FormPetCadastro = () => {
     type: '',
     user_id: 1,
     city_id: null,
-  });
+  };
+  
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const selectedType = type.find(option => option.value === formData.type) || null;
+  const selectedGender = generos.find(option => option.value === formData.gender) || null;
+  const selectedCity = cidades.find(option => option.value === formData.city_id?.toString()) || null;
+  const selectedSize = tamanhos.find(option => option.value === formData.size) || null;
+  const petImgs: PetImgs[] = [];
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleChangeCidade = (selectedOption: any) => {
     setFormData(prevFormData => ({
@@ -77,17 +82,9 @@ const FormPetCadastro = () => {
     }));
   };
 
-  const petImgs: PetImgs[] = []
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    // Your fetch call
     try {
       const response = await fetch('http://localhost:8080/pets', {
         method: 'POST',
@@ -100,6 +97,7 @@ const FormPetCadastro = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data);
+        setFormData(initialFormData);
       } else {
         console.error('Failed to post:', response.statusText);
       }
@@ -108,37 +106,49 @@ const FormPetCadastro = () => {
     }
   };
 
+
   return (
     <div className='adopet-form-pet-cadastro-container'>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={ handleSubmit }>
         <div className='adopet-form-pet-cadastro-fields'>
           <div className='adopet-form-pet-cadastro-part-1'>
             <div className='adopet-form-pet-cadastro-field'>
-              <input name="name" value={formData.name} onChange={handleChange} id="name" type="text" placeholder='Nome:' />
+              <input name="name" 
+                     value={ formData.name } 
+                     onChange={ handleChange } 
+                     id="name" 
+                     type="text" 
+                     placeholder='Nome:' />
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Select
-                options={cidades}
+                options={ cidades }
                 isClearable
                 placeholder="Cidade"
-                onChange={handleChangeCidade}
-                isMulti={false}
+                onChange={ handleChangeCidade }
+                isMulti={ false }
                 classNamePrefix="adopet-form-pet-cadastro-select"
-                value={cidades.find(option => parseInt(option.value, 10) === formData.city_id)}
+                value={ selectedCity }
               />
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Select
-                options={type}
+                options={ type }
                 isClearable
                 placeholder="Espécies"
-                onChange={handleChangeType}
-                isMulti={false}
+                onChange={ handleChangeType }
+                isMulti={ false }
                 classNamePrefix="adopet-form-pet-cadastro-select"
+                value={ selectedType }
               />
             </div>
             <div className='adopet-form-pet-cadastro-field'>
-              <textarea rows={4} name="description" id="description" placeholder="Descrição" />
+              <textarea rows={ 4 } 
+                        name="description" 
+                        id="description" 
+                        placeholder="Descrição" 
+                        onChange={ handleChange } 
+                        value={ formData.description }/>
             </div>
           </div>
           <div className='adopet-form-pet-cadastro-part-2'>
@@ -147,22 +157,24 @@ const FormPetCadastro = () => {
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Select
-                options={generos}
+                options={ generos }
                 isClearable
                 placeholder="Gênero"
                 onChange={ handleChangeGender }
-                isMulti={false}
+                isMulti={ false }
                 classNamePrefix="adopet-form-pet-cadastro-select"
+                value={ selectedGender }
               />
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Select
-                options={tamanhos}
+                options={ tamanhos }
                 isClearable
                 placeholder="Tamanho"
                 onChange={handleChangeTamanho}
-                isMulti={false}
+                isMulti={ false }
                 classNamePrefix="adopet-form-pet-cadastro-select"
+                value={ selectedSize }
               />
             </div>
             <div className='adopet-form-pet-cadastro-field adopet-form-pet-cadastro-field-add-img'>
@@ -177,8 +189,8 @@ const FormPetCadastro = () => {
       </form>
       <div className='adopet-form-pet-cadastro-imgs'>
         {petImgs.map(imgs => (
-          <div className="adopet-form-pet-cadastro-img" key={imgs.img_id}>
-              <img src={imgs.imgUrl} alt={imgs.name} />
+          <div className="adopet-form-pet-cadastro-img" key={ imgs.img_id }>
+              <img src={ imgs.imgUrl } alt={ imgs.name } />
           </div>
         ))} 
       </div>

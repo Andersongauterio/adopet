@@ -11,7 +11,7 @@ const PetCard = ({ pet }: Props) => {
   return (
     < div className="pet-card-container">
       <div className="pet-card-img">
-        <img src={pet.imgUrl} alt="Imagem do pet" />
+        <img src={"https://www.petz.com.br/blog/wp-content/uploads/2019/05/cachorro-independente-1.jpg"} alt="Imagem do pet" />
       </div>
       <div className="pet-card-infos">
         <div className="pet-card-info">

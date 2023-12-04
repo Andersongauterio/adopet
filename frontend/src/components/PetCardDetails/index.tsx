@@ -57,7 +57,6 @@ const PetCardDetails = () => {
     telefone: 51984322799,
     description: "Pet muito querido buscando um lar",
     size: "G",
-    imgUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/YellowLabradorLooking_new.jpg/200px-YellowLabradorLooking_new.jpg",
     cidade: "Dois Irmãos/RS"
   };
 
@@ -79,7 +78,7 @@ const PetCardDetails = () => {
         <div className="pet-card-details-img-main-container">
           <LeftArrowIcon/>
           <div className="pet-card-details-img-main">
-            <img src={pet.imgUrl} alt={pet.name} />
+            <img src={"https://www.petz.com.br/blog/wp-content/uploads/2019/05/cachorro-independente-1.jpg"} alt={pet.name} />
           </div>
           <RightArrowIcon />
         </div>

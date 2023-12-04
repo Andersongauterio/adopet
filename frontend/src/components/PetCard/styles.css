@@ -16,6 +16,11 @@
   margin-bottom: 10px;
 }
 
+.pet-card-img img {
+  width: 250px;
+  height: auto;
+}
+
 .pet-card-infos {
   display: flex;
   flex-direction: row;

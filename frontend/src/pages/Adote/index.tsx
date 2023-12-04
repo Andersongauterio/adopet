@@ -22,7 +22,6 @@ const Adote = () => {
     telefone: 984322799,
     description: "Pet super ativo",
     size: "Grande",
-    imgUrl: "",
     cidade: "Dois Irmãos"
   }
 

@@ -54,10 +54,11 @@ const PetCardDetails = () => {
   {
     id: 1,
     name: "Marley",
-    telefone: 51984322799,
     description: "Pet muito querido buscando um lar",
     size: "G",
-    cidade: "Dois Irmãos/RS"
+    type: "Cachorro",
+    createAt: "2023-11-08T02",
+    updateAt: "2023-11-08T02:08:51.962Z"
   };
 
   const [selectedPetImg, setSelectedPetImg] = useState<PetImgs | null>(null);
@@ -76,7 +77,7 @@ const PetCardDetails = () => {
     <div className="pet-card-details-container">
       <div className="pet-card-details-img-container">
         <div className="pet-card-details-img-main-container">
-          <LeftArrowIcon/>
+          <LeftArrowIcon />
           <div className="pet-card-details-img-main">
             <img src={"https://www.petz.com.br/blog/wp-content/uploads/2019/05/cachorro-independente-1.jpg"} alt={pet.name} />
           </div>
@@ -92,9 +93,7 @@ const PetCardDetails = () => {
       </div>
       <div className="pet-card-details-text">
         <h2>{pet.name}</h2>
-        <h4>{pet.cidade}</h4>
         <p>{pet.description}</p>
-        <p>Telefone: {pet.telefone}</p>
         <p>Tamanho: {pet.size}</p>
       </div>
     </div>

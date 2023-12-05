@@ -19,10 +19,11 @@ const Adote = () => {
   const pet: Pet = {
     id: 1,
     name: "Marley",
-    telefone: 984322799,
     description: "Pet super ativo",
     size: "Grande",
-    cidade: "Dois Irmãos"
+    type: "Cachorro",
+    createAt: "2023-11-08T02",
+    updateAt: "2023-11-08T02:08:51.962Z"
   }
 
   return (

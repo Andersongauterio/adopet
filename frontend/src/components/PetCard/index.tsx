@@ -16,8 +16,6 @@ const PetCard = ({ pet }: Props) => {
       <div className="pet-card-infos">
         <div className="pet-card-info">
           <h5>Nome: {pet.name}</h5>
-          <h5>Telefone: {pet.telefone}</h5>
-          <h5>Cidade: {pet.cidade}</h5>
         </div>
         <div className="adopet-card-buttons">
           <div className="pet-card-adote">

@@ -11,7 +11,6 @@ const PetAdoptInfo = ({ pet }: Props) => {
       <h4>Nome: {pet.name}</h4>
       <h4>Descrição: {pet.description}</h4>
       <h4>Tamanho: {pet.size}</h4>
-      <h4>Cidade: {pet.cidade}</h4>
     </div>
   );
 };

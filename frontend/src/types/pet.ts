@@ -1,8 +1,9 @@
 export type Pet = {
   id: number;
   name: string;
-  telefone: number;
   description: string;
-  size: string; //change to enum
-  cidade: string;
+  size: string; 
+  type: string;
+  createAt: string;
+  updateAt: string;
 }

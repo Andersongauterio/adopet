@@ -5,5 +5,5 @@ export class CreatePetImgsDto {
   alt: string;
 
   @IsUrl()
-  imgUrl: string;
+  imgurl: string;
 }

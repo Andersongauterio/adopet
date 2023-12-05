@@ -14,5 +14,5 @@ export class PetImgs {
   alt: string;
 
   @Column()
-  imgUrl: string;
+  imgurl: string;
 }

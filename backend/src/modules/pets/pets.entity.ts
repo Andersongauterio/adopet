@@ -24,6 +24,9 @@ export class Pet {
   @Column({ type: 'varchar', length: 255 })
   type: string;
 
+  @Column({ type: 'varchar', length: 255 })
+  age: number;
+
   @CreateDateColumn({ name: 'created_at'})
   createAt: Date;
 

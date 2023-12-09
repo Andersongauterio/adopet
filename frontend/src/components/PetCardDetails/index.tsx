@@ -57,6 +57,7 @@ const PetCardDetails = () => {
     description: "Pet muito querido buscando um lar",
     size: "G",
     type: "Cachorro",
+    age: 10,
     createAt: "2023-11-08T02",
     updateAt: "2023-11-08T02:08:51.962Z"
   };

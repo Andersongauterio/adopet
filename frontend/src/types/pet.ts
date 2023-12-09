@@ -4,6 +4,7 @@ export type Pet = {
   description: string;
   size: string; 
   type: string;
+  age: number;
   createAt: string;
   updateAt: string;
 }

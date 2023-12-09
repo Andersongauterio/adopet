@@ -1,20 +1,28 @@
+import { useEffect, useState } from "react";
 import { Pet } from "../../types/pet";
 import PetCard from "../PetCard";
 import "./styles.css";
 
 const PetsList = () => {
 
-  const pets: Pet[] = [
-    {
-      id: 1,
-      name: "Marley",
-      description: "Pet muito querido buscando um lar",
-      size: "G",
-      type: "Cachorro",
-      createAt: "2023-11-08T02",
-      updateAt: "2023-11-08T02:08:51.962Z"
-    }
-  ];
+  const [pets, setPets] = useState<Pet[]>([]);
+
+  useEffect(() => {
+    const fetchPets = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/pets');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        setPets(data);
+      } catch (error) {
+        console.error('Error fetching pets:', error);
+      }
+    };
+
+    fetchPets();
+  }, []);
 
   return (
     <div className="pets-list-container">

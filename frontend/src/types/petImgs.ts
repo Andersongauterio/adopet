@@ -1,6 +1,6 @@
 export type PetImgs = {
+    id: number;
     pet_id: number;
-    img_id: number;
     name: string;
-    imgUrl: string;
+    imgurl: string;
   }

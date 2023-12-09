@@ -27,4 +27,12 @@ export class PetImgsService {
   async remove(id: number): Promise<void> {
     await this.petImgsRepository.delete(id);
   }
+
+  async findImgsByPetId(petId: number): Promise<PetImgs[]> {
+    return this.petImgsRepository.find({ 
+      where: { 
+        pet: { id: petId } 
+      } 
+    });
+  }
 }

@@ -50,3 +50,8 @@
 .pet-card-details-img-main {
   margin: 10px 50px;
 }
+
+.pet-card-details-img-main img{
+  width: 90%;
+  height: auto;
+}

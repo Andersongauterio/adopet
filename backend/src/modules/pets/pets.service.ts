@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreatePetDto } from './dtos/createPet.dto';
@@ -20,6 +20,14 @@ export class PetsService {
 
   async getAllPets(): Promise<Pet[]> {
     return this.petRepository.find();
+  }
+
+  async getPetById(id: number): Promise<Pet> {
+    const pet = await this.petRepository.findOne({ where: { id } });
+    if (!pet) {
+      throw new NotFoundException(`Pet with ID ${id} not found`);
+    }
+    return pet;
   }
 
 }

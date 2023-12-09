@@ -189,8 +189,8 @@ const FormPetCadastro = () => {
       </form>
       <div className='adopet-form-pet-cadastro-imgs'>
         {petImgs.map(imgs => (
-          <div className="adopet-form-pet-cadastro-img" key={ imgs.img_id }>
-              <img src={ imgs.imgUrl } alt={ imgs.name } />
+          <div className="adopet-form-pet-cadastro-img" key={ imgs.id }>
+              <img src={ imgs.imgurl } alt={ imgs.name } />
           </div>
         ))} 
       </div>

@@ -3,9 +3,9 @@ import Select from 'react-select';
 import CityComboBox from "../CityComboBox";
 
 const especies = [
-  { label: 'Cachorro', value: 'cachorro' },
-  { label: 'Gato', value: 'gato' },
-  { label: 'Hamster', value: 'hamster' },
+  { label: 'Cachorro', value: 'Dog' },
+  { label: 'Gato', value: 'Cat' },
+  { label: 'Coelho', value: 'Rabbit' },
 ];
 
 const generos = [

@@ -9,6 +9,7 @@ const PetCardDetails = () => {
   const { petId } = useParams<{ petId: string }>();
   const [pet, setPet] = useState<Pet>();
   const [petImgs, setPetImgs] = useState<PetImgs[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [selectedPetImg, setSelectedPetImg] = useState<PetImgs | null>(null);
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const PetCardDetails = () => {
         }
         const imgsData = await response.json();
         setPetImgs(imgsData);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching pet images:', error);
       }
@@ -46,7 +48,7 @@ const PetCardDetails = () => {
     setSelectedPetImg(petImg);
   };
 
-  if (!pet) {
+  if (!pet || isLoading) {
     return <div>Loading...</div>; // Loading state or error handling
   }
 
@@ -55,15 +57,23 @@ const PetCardDetails = () => {
       <div className="pet-card-details-img-container">
         <div className="pet-card-details-img-main-container">
           <div className="pet-card-details-img-main">
-            <img src={petImgs[0].imgurl} alt={petImgs[0].name} />
+            {petImgs[0] && petImgs[0].imgurl ? (
+              <img src={petImgs[0].imgurl} alt={petImgs[0].name || 'Imagem do pet'} />
+            ) : (
+              <div>Imagem não disponível</div>
+            )}
           </div>
         </div>
         <div className="pet-card-details-img-cards">
-          {petImgs.map(petImg => (
-            <div className="pet-card-details-img-card" key={petImg.id}>
-              <img src={petImg.imgurl} alt={petImg.name} onClick={() => handleImgCardClick(petImg)} />
-            </div>
-          ))}
+          {petImgs.length > 0 ? (
+            petImgs.map(petImg => (
+              <div className="pet-card-details-img-card" key={petImg.id}>
+                <img src={petImg.imgurl || 'url-imagem-padrao.jpg'} alt={petImg.name || 'Imagem do pet'} onClick={() => handleImgCardClick(petImg)} />
+              </div>
+            ))
+          ) : (
+            <div>Sem imagens disponíveis</div>
+          )}
         </div>
       </div>
       <div className="pet-card-details-text">

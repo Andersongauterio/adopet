@@ -28,6 +28,7 @@ const FormPetCadastro = () => {
     size: string;
     gender: string;
     type: string;
+    age: number;
     user_id: number;
     city_id: number | null;
   };
@@ -38,6 +39,7 @@ const FormPetCadastro = () => {
     size: '',
     gender: '',
     type: '',
+    age: 0,
     user_id: 1,
     city_id: null,
   };
@@ -106,7 +108,6 @@ const FormPetCadastro = () => {
     }
   };
 
-
   return (
     <div className='adopet-form-pet-cadastro-container'>
       <form onSubmit={ handleSubmit }>
@@ -153,7 +154,12 @@ const FormPetCadastro = () => {
           </div>
           <div className='adopet-form-pet-cadastro-part-2'>
             <div className='adopet-form-pet-cadastro-field'>
-              <input name="age" id="age" type="number" placeholder='Idade:' />
+              <input 
+                value={ formData.age } 
+                onChange={ handleChange } 
+                name="age" 
+                id="age" 
+                type="number" placeholder='Idade:' />
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Select

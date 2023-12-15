@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ReactComponent as MessageIcon } from '../../assets/images/message.svg';
 import "./styles.css";
+import logo from '../../assets/images/logo.png';
 
 const Navbar = () => {
 
@@ -8,7 +9,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-md navbar-dark bg-primary navbar-container">
       <div className="container-fluid">
         <Link to="/" className="adopet-navbat-logo">
-          <h4>Logo</h4>
+          <img src={logo} alt="logo" />
         </Link>
         <div className="adopet-navbar-buttons">
           <button className="btn btn-secondary">Cadastre-se</button>

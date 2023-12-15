@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import './styles.css';
+import card from '../../assets/images/card.png';
 
 const HeroCard = () => {
   return (
     <div className='adopet-hero-card-container'>
 
       <div className='adopet-hero-card-img'>
-        <h1>Img</h1>
+      <img src={card} alt="logo" />
       </div>
       <div className='adopet-hero-card-buttons'>
         <Link to="/petList">

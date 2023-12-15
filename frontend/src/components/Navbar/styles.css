@@ -6,6 +6,10 @@
     color: #FFFF;
 }
 
+.adopet-navbat-logo img {
+    width: 100px;
+}
+
 .adopet-navbar-buttons button {
 	margin-right: 15px;
 }

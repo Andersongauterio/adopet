@@ -21,7 +21,7 @@ const Adote = () => {
     name: "Marley",
     description: "Pet super ativo",
     size: "Grande",
-    type: "Cachorro",
+    species: "Cachorro",
     age: 2,
     createAt: "2023-11-08T02",
     updateAt: "2023-11-08T02:08:51.962Z"

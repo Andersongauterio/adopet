@@ -56,7 +56,6 @@
 
 .adopet-form-pet-cadastro-field input {
   height: 40px;
-  width: 300px;
   border-radius: 5px;
   border: none;
   padding: 5px;
@@ -80,4 +79,19 @@
 
 .adopet-form-pet-cadastro-select__indicator-separator {
   display: none;
+}
+
+.adopet-form-pet-cadastro-input-age {
+  margin: 0 10px;
+}
+
+.adopet-form-pet-cadastro-input-name {
+  width: 300px;
+}
+
+.adopet-form-pet-cadastro-age {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }

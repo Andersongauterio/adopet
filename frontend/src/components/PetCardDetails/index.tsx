@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { Pet } from "../../types/pet";
 import { PetImgs } from "../../types/petImgs";
 import "./styles.css";
+import notfound from '../../assets/images/image-not-found.png';
 
 const PetCardDetails = () => {
 
@@ -49,7 +50,7 @@ const PetCardDetails = () => {
   };
 
   if (!pet || isLoading) {
-    return <div>Loading...</div>; // Loading state or error handling
+    return <div>Loading...</div>;
   }
 
   return (
@@ -57,11 +58,11 @@ const PetCardDetails = () => {
       <div className="pet-card-details-img-container">
         <div className="pet-card-details-img-main-container">
           <div className="pet-card-details-img-main">
-            {petImgs[0] && petImgs[0].imgurl ? (
-              <img src={petImgs[0].imgurl} alt={petImgs[0].name || 'Imagem do pet'} />
+            { petImgs[0] && petImgs[0].imgurl ? (
+              <img src={ petImgs[0].imgurl || notfound } alt={ petImgs[0].name || 'Imagem do pet' } />
             ) : (
-              <div>Imagem não disponível</div>
-            )}
+              <img src={ notfound } alt={ 'Image not found' } />
+            ) }
           </div>
         </div>
         <div className="pet-card-details-img-cards">

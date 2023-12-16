@@ -1,6 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Pet } from "../../types/pet";
+import { PetImgs } from "../../types/petImgs";
 import "./styles.css";
+import notfound from '../../assets/images/image-not-found.png';
 
 type Props = {
   pet: Pet;
@@ -8,10 +11,39 @@ type Props = {
 
 const PetCard = ({ pet }: Props) => {
 
+  const [petImgs, setPetImgs] = useState<PetImgs[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPetImgs = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/pet-imgs/${pet.id}/imgs`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const imgsData = await response.json();
+        setPetImgs(imgsData);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching pet images:', error);
+      }
+    };
+
+    fetchPetImgs();
+  }, [pet.id]);
+
+  if (!pet || isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     < div className="pet-card-container">
       <div className="pet-card-img">
-        <img src={"https://www.petz.com.br/blog/wp-content/uploads/2019/05/cachorro-independente-1.jpg"} alt="Imagem do pet" />
+        {petImgs[0] && petImgs[0].imgurl ? (
+          <img src={petImgs[0].imgurl} alt={petImgs[0].name || 'Image not found'} />
+        ) : (
+          <img src={notfound} alt={'Imagem do pet'} />
+        )}
       </div>
       <div className="pet-card-infos">
         <div className="pet-card-info">

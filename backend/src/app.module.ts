@@ -8,6 +8,9 @@ import { StatesModule } from './modules/states/states.module';
 import { PetImgsModule } from './modules/pet-imgs/pet-imgs.module';
 import { AdoptionMessagesModule } from './modules/adoption-messages/adoption-messages.module';
 import { AdoptionFormsModule } from './modules/adoption-forms/adoption-forms.module';
+import { UploadImgModule } from './modules/upload-img/upload-img.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -25,6 +28,10 @@ import { AdoptionFormsModule } from './modules/adoption-forms/adoption-forms.mod
       migrations: [`${__dirname}/migration/{.ts,*.js}`],
       migrationsRun: true,
     }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'uploads'),
+      serveRoot: '/images/', // Endpoint para acessar as imagens, ex: http://localhost:3000/images/nome-da-imagem.jpg
+    }),
     PetsModule,
     UserModule,
     CitiesModule,
@@ -32,6 +39,7 @@ import { AdoptionFormsModule } from './modules/adoption-forms/adoption-forms.mod
     PetImgsModule,
     AdoptionMessagesModule,
     AdoptionFormsModule,
+    UploadImgModule,
   ]
 })
 export class AppModule {}

@@ -1,0 +1,14 @@
+image-preview-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .adopet-addimgs-preview {
+    margin: 10px;
+  }
+  
+  .adopet-addimgs-preview img {
+    width: 100px; 
+    height: 100px;
+    object-fit: cover;
+  }

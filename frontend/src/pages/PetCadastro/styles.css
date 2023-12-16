@@ -1,9 +1,22 @@
 .adopet-pet-cadastro-container {
-    background-color: #9C824F;
+    background-color: #CFB388;
+    padding: 15px;
     height: 55vh;
     margin: 15px;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 5px;
+}
+
+.adopet-pet-cadastro-informacoes-title {
+    margin-bottom: 10px;
+    color: #473c26;;
+}
+
+.adopet-pet-cadastro-informacoes {
+    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }

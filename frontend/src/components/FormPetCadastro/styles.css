@@ -14,34 +14,8 @@
   flex-direction: row;
 }
 
-.adopet-form-pet-cadastro-field-add-img {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.adopet-form-pet-cadastro-field-add-img svg {
-  margin-right: 10px;
-}
-
 .adopet-form-pet-cadastro-part-1 {
   margin-right: 20px;
-}
-
-.adopet-form-pet-cadastro-imgs {
-  border: 1px #EEE2D0 solid;
-  border-radius: 5px;
-  width: 150px;
-  height: 370px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.adopet-form-pet-cadastro-img img {
-  width:80px;
-  margin-bottom: 5px;
 }
 
 .adopet-form-pet-cadastro-field {
@@ -51,7 +25,7 @@
 .adopet-form-pet-cadastro-field button {
   width: 300px;
   height: 50px;
-  margin-top: 30px;
+  margin-top: auto;
 }
 
 .adopet-form-pet-cadastro-field input {
@@ -71,6 +45,8 @@
   letter-spacing: -0.015em;
   color: #263238;
   border-bottom: 1px solid #E1E1E1 !important;
+  border-radius: 5px !important;
+  height: 50px;
 }
 
 .adopet-form-pet-cadastro-select__placeholder {
@@ -82,16 +58,33 @@
 }
 
 .adopet-form-pet-cadastro-input-age {
-  margin: 0 10px;
+  margin-right: 10px;
+  width: 100px;
 }
 
 .adopet-form-pet-cadastro-input-name {
   width: 300px;
 }
 
-.adopet-form-pet-cadastro-age {
+.adopet-form-pet-cadastro-field input::placeholder {
+  color: #9E9E9E;
+}
+
+.adopet-form-pet-cadastro-field textarea::placeholder {
+  color: #9E9E9E;
+}
+
+.adopet-form-pet-cadastro-input-age::-webkit-inner-spin-button,
+.adopet-form-pet-cadastro-input-age::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.adopet-form-pet-cadastro-input-age[type=number] {
+  -moz-appearance: textfield;
+}
+
+.adopet-form-pet-cadastro-part-2 {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
 }

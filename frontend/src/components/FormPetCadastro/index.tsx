@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import Select from 'react-select';
-import { ReactComponent as AddIcon } from '../../assets/images/add.svg';
 import { PetImgs } from '../../types/petImgs';
 import './styles.css';
 
@@ -49,7 +48,6 @@ const FormPetCadastro = () => {
   const selectedGender = generos.find(option => option.value === formData.gender) || null;
   const selectedCity = cidades.find(option => option.value === formData.city_id?.toString()) || null;
   const selectedSize = tamanhos.find(option => option.value === formData.size) || null;
-  const petImgs: PetImgs[] = [];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -159,19 +157,6 @@ const FormPetCadastro = () => {
             </div>
           </div>
           <div className='adopet-form-pet-cadastro-part-2'>
-            <div className='adopet-form-pet-cadastro-field adopet-form-pet-cadastro-age'>
-              <label className='adopet-form-pet-cadastro-label-age'>Idade: </label>
-              <input
-                className='adopet-form-pet-cadastro-input-age'
-                value={formData.age}
-                onChange={handleChange}
-                name="age"
-                id="age"
-                type="number"
-                min="0"
-                placeholder='Idade:' />
-              <label className='adopet-form-pet-cadastro-label-age'>Anos </label>
-            </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Select
                 options={generos}
@@ -194,9 +179,17 @@ const FormPetCadastro = () => {
                 value={selectedSize}
               />
             </div>
-            <div className='adopet-form-pet-cadastro-field adopet-form-pet-cadastro-field-add-img'>
-              <AddIcon />
-              <h5>Imagem</h5>
+            <div className='adopet-form-pet-cadastro-field'>
+              <input
+                className='adopet-form-pet-cadastro-input-age'
+                value={formData.age}
+                onChange={handleChange}
+                name="age"
+                id="age"
+                type="number"
+                min="0"
+                placeholder='Idade:' />
+              <label className='adopet-form-pet-cadastro-label-age'>Anos </label>
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <button className='btn btn-secondary'>salvar</button>
@@ -204,13 +197,6 @@ const FormPetCadastro = () => {
           </div>
         </div>
       </form>
-      <div className='adopet-form-pet-cadastro-imgs'>
-        {petImgs.map(imgs => (
-          <div className="adopet-form-pet-cadastro-img" key={imgs.id}>
-            <img src={imgs.imgurl} alt={imgs.name} />
-          </div>
-        ))}
-      </div>
     </div>
   )
 }

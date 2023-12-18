@@ -29,7 +29,7 @@ import { join } from 'path';
       migrationsRun: true,
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
+      rootPath: join(__dirname, '..', '..', '..', 'uploads'),
       serveRoot: '/images/', // Endpoint para acessar as imagens, ex: http://localhost:3000/images/nome-da-imagem.jpg
     }),
     PetsModule,

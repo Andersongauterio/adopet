@@ -1,43 +1,54 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import FormAdocao from '../../components/FormAdocao';
 import PetAdoptInfo from '../../components/PetAdoptInfo';
 import { Pet } from '../../types/pet';
 import './styles.css';
 
-
 const Adote = () => {
 
   const { petId } = useParams();
-  //  const [pet, setPet] = useState<Pet>();
+  const [pet, setPet] = useState<Pet>();
+  const [isLoading, setIsLoading] = useState(true);
 
-  //  useEffect(() => {
-  //    fetch(`/api/pets/${petId}`)
-  //      .then((response) => response.json())
-  //      .then((data) => setPet(data));
-  //  }, [petId]);
+  useEffect(() => {
+    const fetchPetData = async () => {
+      try {
+        const response = await fetch(`http://localhost:8080/pets/${petId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch pet data');
+        }
+        const data = await response.json();
+        setPet(data);
+      } catch (error) {
+        console.error('Error:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
-  const pet: Pet = {
-    id: 1,
-    name: "Marley",
-    description: "Pet super ativo",
-    size: "Grande",
-    species: "Cachorro",
-    age: 2,
-    createAt: "2023-11-08T02",
-    updateAt: "2023-11-08T02:08:51.962Z"
+    fetchPetData();
+  }, [petId]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
 
   return (
     <div className='adopet-adote-container'>
-      <div className='adopet-adote-info'>
-        <PetAdoptInfo pet={pet} />
-      </div>
-      <div className='adopet-adote-form'>
-        <FormAdocao />
-      </div>
+      {pet && (
+        <>
+          <div className='adopet-adote-info'>
+            <PetAdoptInfo pet={pet} />
+          </div>
+          <div className='adopet-adote-form'>
+            <FormAdocao pet={pet} />
+          </div>
+        </>
+      )}
     </div>
   );
-};
+}
 
 export default Adote;
 

@@ -1,7 +1,12 @@
+import { Pet } from '../../types/pet';
 import CityComboBox from '../CityComboBox';
 import './styles.css';
 
-const FormAdocao = () => {
+type Props = {
+  pet: Pet;
+}
+
+const FormAdocao = ({ pet }: Props) => {
   return (
     <div className='adopet-form-adocao-container'>
       <div className='adopet-form-adocao-input'>
@@ -11,9 +16,6 @@ const FormAdocao = () => {
           id="name"
           name="name"
           placeholder="Nome" />
-      </div>
-      <div className='adopet-form-adocao-select adopet-form-adocao-input'>
-        <CityComboBox />
       </div>
       <div className="adopet-form-adocao-input">
         <input

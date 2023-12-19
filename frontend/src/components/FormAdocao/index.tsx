@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Pet } from '../../types/pet';
+import { toast, ToastContainer } from 'react-toastify';
 import './styles.css';
 
 type Props = {
@@ -14,6 +16,8 @@ type FormData = {
 };
 
 const FormAdocao = ({ pet }: Props) => {
+
+  const navigate = useNavigate();
 
   const initialState: FormData = {
     name: '',
@@ -47,12 +51,17 @@ const FormAdocao = ({ pet }: Props) => {
       });
 
       if (!response.ok) {
+        toast.error('Erro ao enviar o formulário.');
         throw new Error('Erro ao enviar o formulário de adoção');
       }
 
       const data = await response.json();
-      console.log('Formulário enviado com sucesso:', data);
       setFormData(initialState);
+      toast.success('Formulário enviado com sucesso!', {
+        onClose: () => navigate(-1)
+      });
+      //console.log('Formulário enviado com sucesso:', data);
+
     } catch (error) {
       console.error('Erro:', error);
     }
@@ -108,6 +117,7 @@ const FormAdocao = ({ pet }: Props) => {
           </div>
         </div>
       </form>
+      <ToastContainer position="top-center" autoClose={3500} />
     </div>
   );
 };

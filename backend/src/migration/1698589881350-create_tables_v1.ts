@@ -75,6 +75,7 @@ export class CreateTables1697935531291 implements MigrationInterface {
             name VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL,
             phone VARCHAR(255) NOT NULL,
+            message TEXT NOT NULL,
             created_at timestamp without time zone DEFAULT now() NOT NULL,
             updated_at timestamp without time zone DEFAULT now() NOT NULL
         );

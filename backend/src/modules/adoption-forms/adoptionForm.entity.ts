@@ -26,6 +26,9 @@ export class AdoptionForm {
   @Column({ type: 'varchar', length: 255 })
   phone: string;
 
+  @Column('text')
+  message: string;
+
   @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   created_at: Date;
 

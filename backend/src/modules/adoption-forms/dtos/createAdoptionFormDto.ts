@@ -21,5 +21,8 @@ export class CreateAdoptionFormDto {
   @IsNotEmpty()
   phone: string;
 
+  @IsString()
+  @IsNotEmpty()
+  message: string;
 
 }

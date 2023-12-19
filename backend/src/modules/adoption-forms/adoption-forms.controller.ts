@@ -32,7 +32,7 @@ export class AdoptionFormsController {
 
   @Delete(':id')
   async remove(@Param('id') id: number): Promise<void> {
-    await this.adoptionFormsService.findOne(id); // Verifica se o formulário existe
+    await this.adoptionFormsService.findOne(id);
     return await this.adoptionFormsService.remove(id);
   }
 }

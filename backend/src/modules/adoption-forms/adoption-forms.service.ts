@@ -32,6 +32,7 @@ export class AdoptionFormsService {
     adoptionForm.name = createAdoptionFormDto.name;
     adoptionForm.email = createAdoptionFormDto.email;
     adoptionForm.phone = createAdoptionFormDto.phone;
+    adoptionForm.message = createAdoptionFormDto.message;
 
     return this.adoptionFormRepository.save(adoptionForm);
   }

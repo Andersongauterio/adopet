@@ -72,7 +72,9 @@ export class CreateTables1697935531291 implements MigrationInterface {
             id serial PRIMARY KEY,
             pet_id INT REFERENCES pets (id),
             user_id INT REFERENCES users (id),
-            message_ID INT REFERENCES msgs (id),
+            name VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            phone VARCHAR(255) NOT NULL,
             created_at timestamp without time zone DEFAULT now() NOT NULL,
             updated_at timestamp without time zone DEFAULT now() NOT NULL
         );
@@ -81,7 +83,6 @@ export class CreateTables1697935531291 implements MigrationInterface {
 
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    // Drop tables in reverse order of creation
     await queryRunner.query(`DROP TABLE adoption_forms;`);
     await queryRunner.query(`DROP TABLE msgs;`);
     await queryRunner.query(`DROP TABLE imgs;`);

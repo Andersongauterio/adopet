@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateAdoptionFormDto {
   @IsInt()
@@ -9,7 +9,17 @@ export class CreateAdoptionFormDto {
   @IsNotEmpty()
   user_id: number;
 
-  @IsInt()
+  @IsString()
   @IsNotEmpty()
-  message_ID: number;
+  name: string;
+
+  @IsString()
+  @IsNotEmpty()
+  email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  phone: string;
+
+
 }

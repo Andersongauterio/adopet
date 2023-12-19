@@ -1,5 +1,4 @@
 import { Pet } from '../../types/pet';
-import CityComboBox from '../CityComboBox';
 import './styles.css';
 
 type Props = {

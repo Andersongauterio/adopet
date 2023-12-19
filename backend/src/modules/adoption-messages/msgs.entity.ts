@@ -24,6 +24,4 @@ export class Msg {
   @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
   updatedAt: Date;
 
-  @OneToMany(() => AdoptionForm, (adoptionForm) => adoptionForm.message)
-  adoptionForms: AdoptionForm[];
 }

@@ -15,12 +15,14 @@ type FormData = {
 
 const FormAdocao = ({ pet }: Props) => {
 
-  const [formData, setFormData] = useState<FormData>({
+  const initialState: FormData = {
     name: '',
     email: '',
     phone: '',
     message: '',
-  });
+  };
+
+  const [formData, setFormData] = useState<FormData>(initialState);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,6 +52,7 @@ const FormAdocao = ({ pet }: Props) => {
 
       const data = await response.json();
       console.log('Formulário enviado com sucesso:', data);
+      setFormData(initialState);
     } catch (error) {
       console.error('Erro:', error);
     }

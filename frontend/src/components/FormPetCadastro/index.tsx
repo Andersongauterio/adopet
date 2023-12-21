@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Select from 'react-select';
-import { PetImgs } from '../../types/petImgs';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 
 const especies = [
@@ -87,7 +88,7 @@ const FormPetCadastro = () => {
 
     const submittedData = {
       ...formData,
-      age: formData.age ? parseInt(formData.age, 10) : 0, // Convertendo 'age' para número
+      age: formData.age ? parseInt(formData.age, 10) : 0,
     };
 
     try {
@@ -103,7 +104,9 @@ const FormPetCadastro = () => {
         const data = await response.json();
         console.log(data);
         setFormData(initialFormData);
+        toast.success('Pet cadastrado com sucesso!');
       } else {
+        toast.error('Falha ao cadastrar pet.');
         console.error('Failed to post:', response.statusText);
       }
     } catch (error) {
@@ -197,6 +200,7 @@ const FormPetCadastro = () => {
           </div>
         </div>
       </form>
+      <ToastContainer position="top-center" autoClose={3000} />
     </div>
   )
 }

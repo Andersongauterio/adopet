@@ -55,6 +55,17 @@ a:hover {
   background-color: #ffff;
 }
 
+.adopetErrorMessage {
+  color: rgb(131, 37, 37);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.adopetErrorMessage:before {
+  content: "⚠ ";
+  font-size: 1.2rem;
+}
+
 .base-input::placeholder {
   color: #9E9E9E;
 }

@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { Pet } from '../../types/pet';
@@ -38,7 +38,7 @@ const FormAdocao = ({ pet }: Props) => {
 
     const payload = {
       pet_id: pet.id,
-      user_id: 1, // Assumindo que este é um ID de usuário fixo
+      user_id: 1, 
       ...data,
     };
     try {
@@ -55,12 +55,10 @@ const FormAdocao = ({ pet }: Props) => {
         return;
       }
 
-      const data = await response.json();
       setFormData(initialState);
       toast.success('Formulário enviado com sucesso!', {
         onClose: () => navigate(-1)
       });
-      //console.log('Formulário enviado com sucesso:', data);
 
     } catch (error) {
       console.error('Erro:', error);
@@ -76,10 +74,8 @@ const FormAdocao = ({ pet }: Props) => {
             type="text"
             id="name"
             { ...register('name', { required: 'Nome é obrigatório' }) }
-            placeholder="Nome"
-            value={formData.name}
-            onChange={handleChange} />
-            { errors.name && <p>{ errors.name.message }</p> }
+            placeholder="Nome" />
+            { errors.name && <p className="adopetErrorMessage">{ errors.name.message }</p> }
         </div>
         <div className="adopet-form-adocao-input">
           <input
@@ -93,20 +89,17 @@ const FormAdocao = ({ pet }: Props) => {
                 message: 'Email inválido'
               }
             }) }  
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange} />
+            placeholder="Email" />
+            { errors.email && <p className="adopetErrorMessage">{ errors.email.message }</p> }
         </div>
         <div className="adopet-form-adocao-input">
           <input
-            className="base-input"
+            className='base-input'
             type="text"
             id="phone"
             { ...register('phone', { required: 'Telefone é obrigatório' }) }
-            placeholder="Telefone:"
-            value={formData.phone}
-            onChange={handleChange} />
-            { errors.phone && <p>{ errors.phone.message }</p> }
+            placeholder="Telefone:" />
+            { errors.phone && <p className="adopetErrorMessage">{ errors.phone.message }</p> }
         </div>
         <div className='adopet-form-adocao-footer'>
           <div className="adopet-form-adocao-input">
@@ -116,10 +109,8 @@ const FormAdocao = ({ pet }: Props) => {
               placeholder="Mensagem:"
               rows={5}
               cols={10}
-              className=" form-control"
-              value={formData.message}
-              onChange={handleChange} />
-              { errors.message && <p>{errors.message.message}</p> }
+              className=" form-control"  />
+              { errors.message && <p className="adopetErrorMessage">{errors.message.message}</p> }
           </div>
           <div className='adopet-form-adocao-button'>
             <button className='btn btn-secondary'>Enviar</button>

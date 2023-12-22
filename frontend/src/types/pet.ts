@@ -3,6 +3,7 @@ export type Pet = {
   name: string;
   description: string;
   size: string; 
+  gender: string;
   species: string;
   age: number;
   createAt: string;

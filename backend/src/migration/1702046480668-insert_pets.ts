@@ -4,7 +4,7 @@ export class InsertPets1702046480668 implements MigrationInterface {
 
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
-        INSERT INTO pets (name, description, size, gender, type, age, user_id, city_id) VALUES 
+        INSERT INTO pets (name, description, size, gender, species, age, user_id, city_id) VALUES 
         ('Pet 1', 'Description 1', 'Small', 'Male', 'Dog', 2, 1, 1),
         ('Pet 2', 'Description 2', 'Medium', 'Female', 'Cat', 4, 1, 2),
         ('Pet 3', 'Description 3', 'Medium', 'Female', 'Dog', 4, 1, 2),

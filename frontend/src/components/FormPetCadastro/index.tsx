@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import Select from 'react-select';
 import { useForm, Controller } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 
-const especies = [
+const species = [
   { label: 'Cachorro', value: 'cachorro' },
 ];
 
@@ -34,57 +33,9 @@ const FormPetCadastro = () => {
     city_id: number | null;
   };
 
-  const initialFormData: FormData = {
-    name: '',
-    description: '',
-    size: '',
-    gender: '',
-    species: '',
-    age: '',
-    user_id: 1,
-    city_id: null,
-  };
-
-  const [formData, setFormData] = useState<FormData>(initialFormData);
-  const selectedSpecies = especies.find(option => option.value === formData.species) || null;
-  const selectedGender = generos.find(option => option.value === formData.gender) || null;
-  const selectedCity = cidades.find(option => option.value === formData.city_id?.toString()) || null;
-  const selectedSize = tamanhos.find(option => option.value === formData.size) || null;
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleChangeCidade = (selectedOption: any) => {
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      city_id: selectedOption ? parseInt(selectedOption.value, 10) : null,
-    }));
-  };
-
-  const handleChangeTamanho = (selectedOption: any) => {
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      size: selectedOption ? selectedOption.value : null,
-    }));
-  };
-
-  const handleChangeGender = (selectedOption: any) => {
-    setFormData(prevFormData => ({
-      ...prevFormData,
-      gender: selectedOption ? selectedOption.value : null,
-    }));
-  };
-
-  const { register, handleSubmit, control, formState: { errors } } = useForm<FormData>();
+  const { register, handleSubmit, control, formState: { errors }, reset } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
-
-    const submittedData = {
-      ...formData,
-      age: formData.age ? parseInt(formData.age, 10) : 0,
-    };
 
     try {
       const response = await fetch('http://localhost:8080/pets', {
@@ -92,14 +43,14 @@ const FormPetCadastro = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(submittedData),
+        body: JSON.stringify({...data, user_id: 1}),
       });
 
       if (response.ok) {
         const data = await response.json();
         console.log(data);
-        setFormData(initialFormData);
         toast.success('Pet cadastrado com sucesso!');
+        reset();
       } else {
         toast.error('Falha ao cadastrar pet.');
         console.error('Failed to post:', response.statusText);
@@ -120,7 +71,7 @@ const FormPetCadastro = () => {
                 type='text'
                 {...register('name', { required: 'Nome é obrigatório' })}
                 placeholder='Nome:' />
-              {errors.name && <p>{errors.name.message}</p>}
+              {errors.name && <p className="adopetErrorMessage">{errors.name.message}</p>}
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Controller
@@ -138,7 +89,7 @@ const FormPetCadastro = () => {
                   />
                 )}
               />
-              {errors.city_id && <p>{errors.city_id.message}</p>}
+              {errors.city_id && <p className="adopetErrorMessage">{errors.city_id.message}</p>}
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Controller
@@ -148,15 +99,15 @@ const FormPetCadastro = () => {
                 render={({ field }) => (
                   <Select
                     {...field}
-                    options={especies}
+                    options={species}
                     classNamePrefix="adopet-form-pet-cadastro-select"
                     placeholder="Espécie"
-                    value={especies.find(option => option.value === field.value)}
+                    value={species.find(option => option.value === field.value)}
                     onChange={val => field.onChange(val ? val.value : '')}
                   />
                 )}
               />
-              {errors.species && <p>{errors.species.message}</p>}
+              {errors.species && <p className="adopetErrorMessage">{errors.species.message}</p>}
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <textarea
@@ -168,7 +119,7 @@ const FormPetCadastro = () => {
                 })}
                 placeholder='Descrição'
               />
-              {errors.description && <p>{errors.description.message}</p>}
+              {errors.description && <p className="adopetErrorMessage">{errors.description.message}</p>}
             </div>
           </div>
           <div className='adopet-form-pet-cadastro-part-2'>
@@ -188,7 +139,7 @@ const FormPetCadastro = () => {
                   />
                 )}
               />
-              {errors.gender && <p>{errors.gender.message}</p>}
+              {errors.gender && <p className="adopetErrorMessage">{errors.gender.message}</p>}
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <Controller
@@ -206,7 +157,7 @@ const FormPetCadastro = () => {
                   />
                 )}
               />
-              {errors.size && <p>{errors.size.message}</p>}
+              {errors.size && <p className="adopetErrorMessage">{errors.size.message}</p>}
             </div>
             <div className='adopet-form-pet-cadastro-field'>
               <input
@@ -220,7 +171,7 @@ const FormPetCadastro = () => {
                 })}
                 placeholder='Idade:'
               />
-              {errors.age && <p>{errors.age.message}</p>}
+              {errors.age && <p className="adopetErrorMessage">{errors.age.message}</p>}
               <label className='adopet-form-pet-cadastro-label-age'>Anos </label>
             </div>
             <div className='adopet-form-pet-cadastro-field'>

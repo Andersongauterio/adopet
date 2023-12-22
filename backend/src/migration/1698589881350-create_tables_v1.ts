@@ -38,7 +38,7 @@ export class CreateTables1697935531291 implements MigrationInterface {
             description TEXT NOT NULL,
             size VARCHAR(255) NOT NULL,
             gender VARCHAR(255) NOT NULL,
-            type VARCHAR(255) NOT NULL,
+            species VARCHAR(255) NOT NULL,
             age INT NOT NULL,
             user_id INT REFERENCES users (id),
             city_id INT REFERENCES cities (id),

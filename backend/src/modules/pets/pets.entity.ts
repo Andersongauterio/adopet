@@ -22,7 +22,7 @@ export class Pet {
   gender: string;
 
   @Column({ type: 'varchar', length: 255 })
-  type: string;
+  species: string;
 
   @Column({ type: 'varchar', length: 255 })
   age: number;

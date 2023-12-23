@@ -12,7 +12,9 @@ const Navbar = () => {
         </Link>
         <div className="adopet-navbar-buttons">
           <button className="btn btn-secondary">Cadastre-se</button>
-          <button className="btn btn-secondary">Fazer login</button>
+          <Link to="/login">
+            <button className="btn btn-secondary">Fazer login</button>
+          </Link>
         </div>
       </div>
     </nav>

@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Adote from "./pages/Adote";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 import Messages from "./pages/Messages";
 import PetCadastro from "./pages/PetCadastro";
 import PetDetail from "./pages/PetDetail";
@@ -22,7 +23,8 @@ const AppRoutes = () => {
         <Route path="/userArea/:userId" element={<UserArea />} />
         <Route path="/petCadastro" element={<PetCadastro />} />
         <Route path="/adotar/:petId" element={<Adote />} />
-        <Route path="/messages" element={<Messages/>} />
+        <Route path="/messages" element={<Messages />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -3,14 +3,20 @@ import { Pet } from "../../types/pet";
 import PetCard from "../PetCard";
 import "./styles.css";
 
-const PetsList = () => {
+interface PetsListProps {
+  currentPage: number;
+  pageSize: number;
+}
+
+const PetsList: React.FC<PetsListProps> = ({ currentPage, pageSize }) => {
 
   const [pets, setPets] = useState<Pet[]>([]);
 
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const response = await fetch('http://localhost:8080/pets');
+        const url = `http://localhost:8080/pets?page=${currentPage}&limit=${pageSize}`;
+        const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -22,7 +28,7 @@ const PetsList = () => {
     };
 
     fetchPets();
-  }, []);
+  }, [currentPage, pageSize]);
 
   return (
     <div className="pets-list-container">

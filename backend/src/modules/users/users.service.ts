@@ -24,6 +24,14 @@ export class UsersService {
         return await this.userRepository.findOne({ id: id } as FindOneOptions<User>);
       }
 
+      async findByLogin(login: string): Promise<User | undefined> {
+        try {
+          return await this.userRepository.findOne({ where: { login } });
+        } catch (error) {
+          throw error;
+        }
+      }
+
       async updateUser(id: number, updateUserDto: CreateUserDto): Promise<User | undefined> {
         const user = await this.userRepository.findOne({ id: id } as FindOneOptions<User>);
         if (!user) {

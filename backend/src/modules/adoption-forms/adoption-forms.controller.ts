@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Param, Delete, HttpStatus, HttpException } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, HttpStatus, HttpException, UseGuards } from '@nestjs/common';
 import { CreateAdoptionFormDto } from './dtos/createAdoptionFormDto';
 import { AdoptionForm } from './adoptionForm.entity';
 import { AdoptionFormsService } from './adoption-forms.service';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('adoption-forms')
 export class AdoptionFormsController {
@@ -16,6 +17,7 @@ export class AdoptionFormsController {
     }
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Get()
   async findAll(): Promise<AdoptionForm[]> {
     return await this.adoptionFormsService.findAll();

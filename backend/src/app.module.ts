@@ -11,6 +11,7 @@ import { AdoptionFormsModule } from './modules/adoption-forms/adoption-forms.mod
 import { UploadImgModule } from './modules/upload-img/upload-img.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { join } from 'path';
     AdoptionMessagesModule,
     AdoptionFormsModule,
     UploadImgModule,
+    AuthModule,
   ]
 })
 export class AppModule {}

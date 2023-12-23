@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { FindOneOptions, Repository } from 'typeorm';
 import { CreateUserDto } from './dtos/createUser.dto';
@@ -14,6 +14,15 @@ export class UsersService {
   ) { }
 
   async createUser(createUserDto: CreateUserDto): Promise<User> {
+
+    const existingUser = await this.userRepository.findOne({ 
+      where: { login: createUserDto.login } 
+    });
+
+    if (existingUser) {
+      throw new ConflictException('Login já está em uso.');
+    }
+
     const user = new User();
     user.login = createUserDto.login;
     user.name = createUserDto.name;

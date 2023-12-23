@@ -18,8 +18,11 @@ export class PetsService {
     });
   }
 
-  async getAllPets(): Promise<Pet[]> {
-    return this.petRepository.find();
+  async getAllPets({ page, limit }): Promise<Pet[]> {
+    return this.petRepository.find({
+      skip: (page - 1) * limit,
+      take: limit,
+    });
   }
 
   async getPetById(id: number): Promise<Pet> {

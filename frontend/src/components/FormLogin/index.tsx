@@ -27,7 +27,7 @@ const FormLogin = () => {
     .then(data => {
       console.log('Login Successful:', data);
       localStorage.setItem('token', data.token);
-      performLogin(data.token);
+      performLogin(data.token, data.user);
       navigate('/');
     })
     .catch((error) => {

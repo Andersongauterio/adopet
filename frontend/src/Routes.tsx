@@ -24,7 +24,7 @@ const AppRoutes = () => {
         <Route path="/petCardDetails/:petId" element={<PetDetail />} />
         <Route path="/userArea/:userId" element={<UserArea />} />
         <Route path="/petCadastro" element={<PrivateRoute element={<PetCadastro />} />} />
-        <Route path="/adotar/:petId" element={<Adote />} />
+        <Route path="/adotar/:petId" element={<PrivateRoute element={<Adote />} />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastre-se" element={<Signup />} />

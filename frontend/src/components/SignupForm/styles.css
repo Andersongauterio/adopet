@@ -32,3 +32,8 @@
   color: white;
   cursor: pointer;
 }
+
+.adopet-signup-form-error-message {
+  color: red;
+  font-size: 0.8em;
+}

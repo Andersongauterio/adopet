@@ -25,8 +25,7 @@ export class UsersService {
 
     const user = new User();
     user.login = createUserDto.login;
-    user.name = createUserDto.name;
-    user.phone = createUserDto.phone;
+    user.email = createUserDto.email;
     const salt = await bcrypt.genSalt();
     user.password = await bcrypt.hash(createUserDto.password, salt);
     return await this.userRepository.save(user);
@@ -54,9 +53,7 @@ export class UsersService {
       return undefined;
     }
 
-    user.name = updateUserDto.name;
-    user.phone = updateUserDto.phone;
-
+    user.email = updateUserDto.email;
     if (updateUserDto.password) {
       const salt = await bcrypt.genSalt();
       user.password = await bcrypt.hash(updateUserDto.password, salt);

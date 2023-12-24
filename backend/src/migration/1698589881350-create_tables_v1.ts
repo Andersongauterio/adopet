@@ -6,10 +6,9 @@ export class CreateTables1697935531291 implements MigrationInterface {
     await queryRunner.query(`
         CREATE TABLE users (
             id serial PRIMARY KEY,
-            name VARCHAR(255) NOT NULL,
-            phone NUMERIC NOT NULL,
             login VARCHAR(255) NOT NULL,
             password VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
             created_at timestamp without time zone DEFAULT now() NOT NULL,
             updated_at timestamp without time zone DEFAULT now() NOT NULL
         );

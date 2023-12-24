@@ -1,0 +1,34 @@
+.adopet-signup-form-container {
+  width: 500px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(248, 244, 236);
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  padding: 20px;
+}
+
+.adopet-signup-form-container h2 {
+  text-align: center;
+}
+
+.adopet-signup-form-container input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.adopet-signup-form-container button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #888374;
+  color: white;
+  cursor: pointer;
+}

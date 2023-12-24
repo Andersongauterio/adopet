@@ -11,9 +11,11 @@ const Navbar = () => {
           <img src={logo} alt="logo" />
         </Link>
         <div className="adopet-navbar-buttons">
-          <button className="btn btn-secondary">Cadastre-se</button>
           <Link to="/login">
             <button className="btn btn-secondary">Fazer login</button>
+          </Link>
+          <Link to="/cadastre-se">
+            <button className="btn btn-secondary">Cadastre-se</button>
           </Link>
         </div>
       </div>

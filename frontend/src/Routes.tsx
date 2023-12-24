@@ -9,6 +9,7 @@ import Messages from "./pages/Messages";
 import PetCadastro from "./pages/PetCadastro";
 import PetDetail from "./pages/PetDetail";
 import PetList from "./pages/PetList";
+import Signup from "./pages/Signup";
 import UserArea from "./pages/UserArea";
 
 const AppRoutes = () => {
@@ -25,6 +26,7 @@ const AppRoutes = () => {
         <Route path="/adotar/:petId" element={<Adote />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/cadastre-se" element={<Signup />} />
       </Routes>
       <Footer />
     </BrowserRouter>

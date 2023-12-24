@@ -11,7 +11,6 @@ const PetCardDetails = () => {
   const [pet, setPet] = useState<Pet>();
   const [petImgs, setPetImgs] = useState<PetImgs[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedPetImg, setSelectedPetImg] = useState<PetImgs | null>(null);
 
   useEffect(() => {
     const fetchPetDetails = async () => {
@@ -45,10 +44,6 @@ const PetCardDetails = () => {
     fetchPetImgs();
   }, [petId]);
 
-  const handleImgCardClick = (petImg: PetImgs) => {
-    setSelectedPetImg(petImg);
-  };
-
   if (!pet || isLoading) {
     return <div>Loading...</div>;
   }
@@ -69,7 +64,7 @@ const PetCardDetails = () => {
           {petImgs.length > 0 ? (
             petImgs.map(petImg => (
               <div className="pet-card-details-img-card" key={petImg.id}>
-                <img src={petImg.imgurl || 'url-imagem-padrao.jpg'} alt={petImg.name || 'Imagem do pet'} onClick={() => handleImgCardClick(petImg)} />
+                <img src={petImg.imgurl || 'url-imagem-padrao.jpg'} alt={petImg.name || 'Imagem do pet'} />
               </div>
             ))
           ) : (

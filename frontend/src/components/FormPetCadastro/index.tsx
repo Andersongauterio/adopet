@@ -3,21 +3,33 @@ import { useForm, Controller } from 'react-hook-form';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
+import { useAuthToken } from '../../hooks/useAuthToken';
 
 const species = [
   { label: 'Cachorro', value: 'cachorro' },
+  { label: 'Gato', value: 'cachorro' },
+  { label: 'Coelho', value: 'cachorro' },
+  { label: 'Passaro', value: 'cachorro' },
+  { label: 'Roedor', value: 'cachorro' },
 ];
 
 const generos = [
   { label: 'Macho', value: 'macho' },
+  { label: 'Fêmea', value: 'femea' },
+  { label: 'Não sei', value: 'undefined' },
 ];
 
 const tamanhos = [
+  { label: 'Pequeno', value: 'pequeno' },
+  { label: 'Médio', value: 'médio' },
   { label: 'Grande', value: 'grande' },
 ];
 
 const cidades = [
-  { label: 'Dois Irmãos', value: '1' },
+  { label: 'Porto Alegre', value: '1' },
+  { label: 'Dois Irmãos', value: '3' },
+  { label: 'Novo Hamburgo', value: '4' },
+  { label: 'São Leopoldo', value: '5' },
 ];
 
 const FormPetCadastro = () => {
@@ -34,6 +46,7 @@ const FormPetCadastro = () => {
   };
 
   const { register, handleSubmit, control, formState: { errors }, reset } = useForm<FormData>();
+  const token = useAuthToken();
 
   const onSubmit = async (data: FormData) => {
 
@@ -42,6 +55,7 @@ const FormPetCadastro = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({...data, user_id: 1}),
       });

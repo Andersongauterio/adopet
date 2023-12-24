@@ -61,7 +61,7 @@ const PetCardDetails = () => {
             { petImgs[0] && petImgs[0].imgurl ? (
               <img src={ petImgs[0].imgurl || notfound } alt={ petImgs[0].name || 'Imagem do pet' } />
             ) : (
-              <img src={ notfound } alt={ 'Image not found' } />
+              <img src={ notfound } alt={ 'Not found' } />
             ) }
           </div>
         </div>

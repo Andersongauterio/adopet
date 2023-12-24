@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 import './styles.css';
 
 const FormLogin = () => {
@@ -7,9 +8,31 @@ const FormLogin = () => {
   const [login, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const { login: performLogin } = useAuth();
 
   const handleLogin = () => {
-    console.log('Login Attempt:', login, password);
+    fetch('http://localhost:8080/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ login, password }),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Falha no login.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Login Successful:', data);
+      localStorage.setItem('token', data.token);
+      performLogin(data.token);
+      navigate('/');
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
   }
 
   const handleSignUp = () => {

@@ -11,6 +11,7 @@ import PetDetail from "./pages/PetDetail";
 import PetList from "./pages/PetList";
 import Signup from "./pages/Signup";
 import UserArea from "./pages/UserArea";
+import PrivateRoute from "./PrivateRoute";
 
 const AppRoutes = () => {
   return (
@@ -22,7 +23,7 @@ const AppRoutes = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/petCardDetails/:petId" element={<PetDetail />} />
         <Route path="/userArea/:userId" element={<UserArea />} />
-        <Route path="/petCadastro" element={<PetCadastro />} />
+        <Route path="/petCadastro" element={<PrivateRoute element={<PetCadastro />} />} />
         <Route path="/adotar/:petId" element={<Adote />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/login" element={<Login />} />

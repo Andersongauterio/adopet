@@ -1,7 +1,8 @@
 import { PetsService } from './pets.service';
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
 import { CreatePetDto } from './dtos/createPet.dto';
 import { Pet } from './pets.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('pets')
 export class PetsController {
@@ -24,6 +25,7 @@ export class PetsController {
     return this.petService.getPetById(id);
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Post()
   async createPet(@Body() createPet: CreatePetDto): Promise<Pet> {
     return this.petService.createPet(createPet);

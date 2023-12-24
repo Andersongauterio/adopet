@@ -14,7 +14,7 @@ const Adote = () => {
   useEffect(() => {
     const fetchPetData = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/pets/${petId}`);
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/pets/${petId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch pet data');
         }

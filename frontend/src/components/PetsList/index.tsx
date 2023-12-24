@@ -15,7 +15,7 @@ const PetsList: React.FC<PetsListProps> = ({ currentPage, pageSize }) => {
   useEffect(() => {
     const fetchPets = async () => {
       try {
-        const url = `http://localhost:8080/pets?page=${currentPage}&limit=${pageSize}`;
+        const url = `${process.env.REACT_APP_API_URL}/pets?page=${currentPage}&limit=${pageSize}`;
         const response = await fetch(url);
         if (!response.ok) {
           throw new Error('Network response was not ok');

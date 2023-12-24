@@ -38,7 +38,7 @@ const SignupForm = () => {
       email: email
     };
 
-    fetch('http://localhost:8080/users', {
+    fetch(`${process.env.REACT_APP_API_URL}/users`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

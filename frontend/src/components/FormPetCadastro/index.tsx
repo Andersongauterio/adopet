@@ -38,7 +38,7 @@ const FormPetCadastro = () => {
   const onSubmit = async (data: FormData) => {
 
     try {
-      const response = await fetch('http://localhost:8080/pets', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/pets`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

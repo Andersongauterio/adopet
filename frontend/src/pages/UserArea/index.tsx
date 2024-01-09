@@ -1,10 +1,10 @@
-import UserMenu from '../../components/UserMenu';
+import UserDashboard from '../UserDashboard';
 import './styles.css';
 
 const UserArea = () => {
   return (
     <div className='adopet-userarea-container'>
-      <UserMenu />
+      <UserDashboard />
     </div>
   )
 }

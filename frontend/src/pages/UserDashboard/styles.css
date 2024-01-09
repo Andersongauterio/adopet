@@ -1,0 +1,5 @@
+.adopet-userdashboard-container {
+  margin: 15px;
+  padding: 20px;
+  height: calc(100vh - 320px);
+}

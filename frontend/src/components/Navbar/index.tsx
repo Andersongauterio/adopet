@@ -14,7 +14,12 @@ const Navbar = () => {
         </Link>
         <div className="adopet-navbar-buttons">
           {isLoggedIn ? (
-            <button onClick={logout} className="btn btn-secondary">Logout</button>
+            <div>
+              <button onClick={logout} className="btn btn-secondary">Logout</button>
+              <Link to="/userArea">
+                <button className="btn btn-secondary">Área do usuário</button>
+              </Link>
+            </div>
           ) : (
             <>
               <Link to="/login">

@@ -4,6 +4,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 import { useAuthToken } from '../../hooks/useAuthToken';
+import { useState } from 'react';
 
 const species = [
   { label: 'Cachorro', value: 'cachorro' },
@@ -45,8 +46,17 @@ const FormPetCadastro = () => {
     city_id: number;
   };
 
+  interface OptionType {
+    label: string;
+    value: string;
+  }
+
   const { register, handleSubmit, control, formState: { errors }, reset } = useForm<FormData>();
   const token = useAuthToken();
+  const [selectedCity, setSelectedCity] = useState<OptionType | null>(null);
+  const [selectedSpecies, setSelectedSpecies] = useState<OptionType | null>(null);
+  const [selectedGender, setSelectedGender] = useState<OptionType | null>(null);
+  const [selectedSize, setSelectedSize] = useState<OptionType | null>(null);
 
   const onSubmit = async (data: FormData) => {
     debugger;
@@ -62,10 +72,12 @@ const FormPetCadastro = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
-        console.log(data);
         toast.success('Pet cadastrado com sucesso!');
         reset();
+        setSelectedCity(null);
+        setSelectedSpecies(null);
+        setSelectedGender(null);
+        setSelectedSize(null);
       } else {
         toast.error('Falha ao cadastrar pet.');
         console.error('Failed to post:', response.statusText);
@@ -99,8 +111,11 @@ const FormPetCadastro = () => {
                     options={cidades}
                     classNamePrefix="adopet-form-pet-cadastro-select"
                     placeholder="Cidade"
-                    value={cidades.find(option => option.value === (field.value ? field.value.toString() : ''))}
-                    onChange={val => field.onChange(val ? parseInt(val.value, 10) : null)}
+                    value={selectedCity}
+                    onChange={val => {
+                      field.onChange(val ? parseInt(val.value, 10) : null);
+                      setSelectedCity(val as OptionType);
+                    }}
                   />
                 )}
               />
@@ -117,8 +132,11 @@ const FormPetCadastro = () => {
                     options={species}
                     classNamePrefix="adopet-form-pet-cadastro-select"
                     placeholder="Espécie"
-                    value={species.find(option => option.value === field.value)}
-                    onChange={val => field.onChange(val ? val.value : '')}
+                    value={selectedSpecies}
+                    onChange={val => {
+                      field.onChange(val ? val.value : '');
+                      setSelectedSpecies(val as OptionType);
+                    }}
                   />
                 )}
               />
@@ -149,8 +167,11 @@ const FormPetCadastro = () => {
                     options={generos}
                     classNamePrefix="adopet-form-pet-cadastro-select"
                     placeholder="Gênero"
-                    value={generos.find(option => option.value === field.value)}
-                    onChange={val => field.onChange(val ? val.value : '')}
+                    value={selectedGender}
+                    onChange={val => {
+                      field.onChange(val ? val.value : '');
+                      setSelectedGender(val as OptionType);
+                    }}
                   />
                 )}
               />
@@ -167,8 +188,11 @@ const FormPetCadastro = () => {
                     options={tamanhos}
                     classNamePrefix="adopet-form-pet-cadastro-select"
                     placeholder="Tamanho"
-                    value={tamanhos.find(option => option.value === field.value)}
-                    onChange={val => field.onChange(val ? val.value : '')}
+                    value={selectedSize}
+                    onChange={val => {
+                      field.onChange(val ? val.value : '');
+                      setSelectedSize(val as OptionType);
+                    }}
                   />
                 )}
               />

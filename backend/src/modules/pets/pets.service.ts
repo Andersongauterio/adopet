@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { User } from '../users/users.entity';
 import { CreatePetDto } from './dtos/createPet.dto';
 import { Pet } from './pets.entity';
 
@@ -12,10 +13,11 @@ export class PetsService {
     private readonly petRepository: Repository<Pet>
   ) { };
 
-  async createPet(createPetDTO: CreatePetDto): Promise<Pet> {
-    return this.petRepository.save({
-      ...createPetDTO
-    });
+  async createPet(createPetDto: CreatePetDto, user: User): Promise<Pet> {
+    const pet = new Pet();
+    Object.assign(pet, createPetDto);
+    pet.user = user;
+    return this.petRepository.save(pet);
   }
 
   async getAllPets({ page, limit }): Promise<Pet[]> {

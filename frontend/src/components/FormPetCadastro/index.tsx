@@ -42,13 +42,14 @@ const FormPetCadastro = () => {
     species: string;
     age: string;
     user_id: number;
-    city_id: number | null;
+    city_id: number;
   };
 
   const { register, handleSubmit, control, formState: { errors }, reset } = useForm<FormData>();
   const token = useAuthToken();
 
   const onSubmit = async (data: FormData) => {
+    debugger;
 
     try {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/pets`, {
@@ -57,7 +58,7 @@ const FormPetCadastro = () => {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify({...data, user_id: 1}),
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {

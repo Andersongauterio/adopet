@@ -36,8 +36,11 @@ export class PetsController {
 
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  async createPet(@Body() createPet: CreatePetDto): Promise<Pet> {
-    return this.petService.createPet(createPet);
+  async createPet(@Body() createPetDto: CreatePetDto, @GetUser() user: User): Promise<Pet> {
+    const pet = new Pet();
+    Object.assign(pet, createPetDto);
+    pet.user = user;
+    return this.petService.createPet(createPetDto, user);
   }
 
 }

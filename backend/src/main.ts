@@ -1,5 +1,5 @@
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config({ path: '.env.development.local' });
 import { AppModule } from './app.module';
 import { NestFactory } from '@nestjs/core';
 

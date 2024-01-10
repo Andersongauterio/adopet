@@ -1,3 +1,4 @@
+import { Cities } from './../cities/cities.entity';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -10,13 +11,24 @@ export class PetsService {
 
   constructor(
     @InjectRepository(Pet)
-    private readonly petRepository: Repository<Pet>
+    private readonly petRepository: Repository<Pet>,
+
+    @InjectRepository(Cities)
+    private readonly cityRepository: Repository<Cities>
   ) { };
 
   async createPet(createPetDto: CreatePetDto, user: User): Promise<Pet> {
     const pet = new Pet();
     Object.assign(pet, createPetDto);
     pet.user = user;
+    if (createPetDto.city_id) {
+      const city = await this.cityRepository.findOne({
+        where: { id: createPetDto.city_id }
+      });
+      if (city) {
+        pet.city = city;
+      }
+    }
     return this.petRepository.save(pet);
   }
 

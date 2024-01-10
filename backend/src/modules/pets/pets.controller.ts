@@ -3,10 +3,19 @@ import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/co
 import { CreatePetDto } from './dtos/createPet.dto';
 import { Pet } from './pets.entity';
 import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from 'src/common/decorators/get-user.decorator';
+import { User } from '../users/users.entity';
 
 @Controller('pets')
 export class PetsController {
-  constructor(private readonly petService: PetsService) {}
+  constructor(private readonly petService: PetsService) { }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Get('/mypets')
+  async findMyPets(@GetUser() user: User): Promise<Pet[]> {
+    console.log(user);
+    return this.petService.getPetsByUserId(user.id);
+  }
 
   @Get()
   async getAllPets(
@@ -30,4 +39,5 @@ export class PetsController {
   async createPet(@Body() createPet: CreatePetDto): Promise<Pet> {
     return this.petService.createPet(createPet);
   }
+
 }

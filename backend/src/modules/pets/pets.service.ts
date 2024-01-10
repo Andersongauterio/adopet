@@ -33,4 +33,10 @@ export class PetsService {
     return pet;
   }
 
+  async getPetsByUserId(userId: number): Promise<Pet[]> {
+    return this.petRepository.find({
+      where: { user: { id: userId } }
+    });
+  }
+
 }

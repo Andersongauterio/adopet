@@ -1,10 +1,11 @@
 import { PetsService } from './pets.service';
-import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, Query, UseGuards } from '@nestjs/common';
 import { CreatePetDto } from './dtos/createPet.dto';
 import { Pet } from './pets.entity';
 import { AuthGuard } from '@nestjs/passport';
 import { GetUser } from 'src/common/decorators/get-user.decorator';
 import { User } from '../users/users.entity';
+import { UpdatePetDto } from './dtos/updatePet.dto';
 
 @Controller('pets')
 export class PetsController {
@@ -41,6 +42,12 @@ export class PetsController {
     Object.assign(pet, createPetDto);
     pet.user = user;
     return this.petService.createPet(createPetDto, user);
+  }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Put(':id')
+  async updatePet(@Param('id') id: number, @Body() updatePetDto: UpdatePetDto): Promise<Pet> {
+    return this.petService.updatePet(id, updatePetDto);
   }
 
 }

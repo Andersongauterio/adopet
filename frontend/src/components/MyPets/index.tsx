@@ -4,11 +4,13 @@ import { useAuthToken } from '../../hooks/useAuthToken';
 import { Pet } from '../../types/pet';
 import { ReactComponent as DeleteIcon } from '../../assets/images/delete.svg';
 import { ReactComponent as EditIcon } from '../../assets/images/edit.svg';
+import { useNavigate } from 'react-router-dom';
 
 const MyPets = () => {
 
   const [pets, setPets] = useState<Pet[]>([]);
   const token = useAuthToken();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPets = async () => {
@@ -39,34 +41,34 @@ const MyPets = () => {
   }, [token]);
 
   const handleEdit = (pet: Pet) => {
-    console.log("Editar", pet);
+    navigate(`/editpet/${pet.id}`);
   };
-  
+
   const handleDelete = (petId: number) => {
     console.log("Excluir", petId);
   };
 
   return (
     <div className='adopet-mypets-container'>
-     <table>
-      <thead>
-        <tr>
-          <th>Nome do Pet</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {pets.map(pet => (
-          <tr key={pet.id}>
-            <td>{pet.name}</td>
-            <td>
-              <EditIcon className="adopet-edit-icon" onClick={() => handleEdit(pet)}/>
-              <DeleteIcon className="adopet-delete-icon" onClick={() => handleDelete(pet.id)}/>
-            </td>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome do Pet</th>
+            <th></th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {pets.map(pet => (
+            <tr key={pet.id}>
+              <td>{pet.name}</td>
+              <td>
+                <EditIcon className="adopet-edit-icon" onClick={() => handleEdit(pet)} />
+                <DeleteIcon className="adopet-delete-icon" onClick={() => handleDelete(pet.id)} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

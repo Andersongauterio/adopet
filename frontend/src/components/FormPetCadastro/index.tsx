@@ -4,7 +4,8 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 import { useAuthToken } from '../../hooks/useAuthToken';
-import { useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 const species = [
   { label: 'Cachorro', value: 'cachorro' },
@@ -51,19 +52,57 @@ const FormPetCadastro = () => {
     value: string;
   }
 
-  const { register, handleSubmit, control, formState: { errors }, reset } = useForm<FormData>();
+  const navigate = useNavigate();
+  const { petId } = useParams();
   const token = useAuthToken();
+
+  const { register, handleSubmit, control, formState: { errors }, reset } = useForm<FormData>();
   const [selectedCity, setSelectedCity] = useState<OptionType | null>(null);
   const [selectedSpecies, setSelectedSpecies] = useState<OptionType | null>(null);
   const [selectedGender, setSelectedGender] = useState<OptionType | null>(null);
   const [selectedSize, setSelectedSize] = useState<OptionType | null>(null);
 
+  useEffect(() => {
+    const fetchPetData = async () => {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/pets/${petId}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+        if (response.ok) {
+          const petData = await response.json();
+          reset(petData);
+          const foundCity = cidades.find(city => city.value === petData.city_id.toString());
+          setSelectedCity(foundCity ? foundCity : null);
+
+          const foundSpecies = species.find(specie => specie.value === petData.species);
+          setSelectedSpecies(foundSpecies ? foundSpecies : null);
+
+          const foundGender = generos.find(genero => genero.value === petData.gender);
+          setSelectedGender(foundGender ? foundGender : null);
+
+          const foundSize = tamanhos.find(tamanho => tamanho.value === petData.size);
+          setSelectedSize(foundSize ? foundSize : null);
+        }
+      } catch (error) {
+        console.error('Erro ao buscar dados do pet', error);
+      }
+    };
+
+    if (petId) {
+      fetchPetData();
+    }
+  }, [petId, token, reset]);
+
   const onSubmit = async (data: FormData) => {
-    debugger;
+
+    const url = petId ? `${process.env.REACT_APP_API_URL}/pets/${petId}` : `${process.env.REACT_APP_API_URL}/pets`;
+    const method = petId ? 'PUT' : 'POST';
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/pets`, {
-        method: 'POST',
+      const response = await fetch(url, {
+        method: method,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
@@ -72,12 +111,13 @@ const FormPetCadastro = () => {
       });
 
       if (response.ok) {
-        toast.success('Pet cadastrado com sucesso!');
+        toast.success(`Pet ${petId ? 'atualizado' : 'cadastrado'} com sucesso!`);
         reset();
         setSelectedCity(null);
         setSelectedSpecies(null);
         setSelectedGender(null);
         setSelectedSize(null);
+        navigate('/userArea');
       } else {
         toast.error('Falha ao cadastrar pet.');
         console.error('Failed to post:', response.statusText);

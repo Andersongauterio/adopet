@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { User } from '../users/users.entity';
 import { CreatePetDto } from './dtos/createPet.dto';
 import { Pet } from './pets.entity';
+import { UpdatePetDto } from './dtos/updatePet.dto';
 
 @Injectable()
 export class PetsService {
@@ -40,7 +41,9 @@ export class PetsService {
   }
 
   async getPetById(id: number): Promise<Pet> {
-    const pet = await this.petRepository.findOne({ where: { id } });
+    const pet = await this.petRepository.findOne({
+      where: { id }
+    });
     if (!pet) {
       throw new NotFoundException(`Pet with ID ${id} not found`);
     }
@@ -51,6 +54,16 @@ export class PetsService {
     return this.petRepository.find({
       where: { user: { id: userId } }
     });
+  }
+
+  async updatePet(id: number, updatePetDto: UpdatePetDto): Promise<Pet> {
+    const pet = await this.petRepository.findOne({ where: { id } });
+    if (!pet) {
+      throw new NotFoundException(`Pet with ID ${id} not found`);
+    }
+  
+    Object.assign(pet, updatePetDto);
+    return this.petRepository.save(pet);
   }
 
 }

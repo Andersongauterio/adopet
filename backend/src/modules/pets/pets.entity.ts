@@ -41,6 +41,9 @@ export class Pet {
   @JoinColumn({ name: 'city_id' })
   city: Cities;
 
+  @Column({ nullable: true })
+  city_id: number;
+
   @OneToMany(() => PetImgs, (img) => img.pet)
   imgs: PetImgs[];
 

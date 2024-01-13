@@ -28,6 +28,7 @@ const AppRoutes = () => {
         <Route path="/messages" element={<Messages />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cadastre-se" element={<Signup />} />
+        <Route path="/editPet/:petId" element={<PrivateRoute element={<PetCadastro />} />} />
       </Routes>
       <Footer />
     </BrowserRouter>

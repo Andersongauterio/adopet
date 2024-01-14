@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './styles.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -6,7 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AddPetImgs: React.FC = () => {
 
-  const [images, setImages] = useState<string[]>([]);
+  type PetImgs = {
+    id?: number;
+    imgurl: string; 
+  };
+
+  const [images, setImages] = useState<PetImgs[]>([]);
   const maxImages = 6;
   const { petId } = useParams<{ petId: string }>();
 
@@ -36,16 +41,16 @@ const AddPetImgs: React.FC = () => {
   const handleImageChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       const filesArray = Array.from(e.target.files);
-
+  
       for (const file of filesArray) {
         const imgUrl = await uploadImageToBackend(file);
         if (imgUrl) {
-          setImages((prevImages) => [...prevImages, imgUrl]);
+          setImages(prevImages => [...prevImages, { imgurl: imgUrl }]);
           toast.success("Imagem carregada com sucesso!");
         }
       }
     }
-  }
+  };
 
   const handleSaveImages = async () => {
 
@@ -78,6 +83,24 @@ const AddPetImgs: React.FC = () => {
     }
   }
 
+  useEffect(() => {
+    async function fetchPetImages() {
+      try {
+        const url = `${process.env.REACT_APP_API_URL}/pet-imgs/${petId}/imgs`;
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Erro ao carregar imagens');
+        }
+        const images = await response.json();
+        setImages(images);
+      } catch (error) {
+        console.error('Erro ao buscar imagens:', error);
+      }
+    }
+
+    fetchPetImages();
+  }, [petId]);
+
   return (
     <div className='adopet-addimgs-container'>
       <input
@@ -88,8 +111,9 @@ const AddPetImgs: React.FC = () => {
       />
       <div className="adopet-addimgs-imgs">
         {images.map((image, index) => (
-          <div key={index} className="adopet-addimgs-preview">
-            <img src={image} alt={`Imagem ${index}`} />
+          <div key={image.id} className="adopet-addimgs-preview">
+            <img src={image.imgurl} alt={`Imagem ${index}`} />
+            {/* Adicione quaisquer botões ou controles para atualizar ou excluir a imagem */}
           </div>
         ))}
       </div>

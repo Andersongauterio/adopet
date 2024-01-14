@@ -40,7 +40,7 @@ const PetCard = ({ pet }: Props) => {
     < div className="pet-card-container">
       <div className="pet-card-img">
         {petImgs[0] && petImgs[0].imgurl ? (
-          <img src={petImgs[0].imgurl} alt={petImgs[0].name || 'Image not found'} />
+          <img src={petImgs[0].imgurl} alt={petImgs[0].alt || 'Image not found'} />
         ) : (
           <img src={notfound} alt={'Imagem do pet'} />
         )}

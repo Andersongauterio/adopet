@@ -54,7 +54,7 @@ const PetCardDetails = () => {
         <div className="pet-card-details-img-main-container">
           <div className="pet-card-details-img-main">
             { petImgs[0] && petImgs[0].imgurl ? (
-              <img src={ petImgs[0].imgurl || notfound } alt={ petImgs[0].name || 'Imagem do pet' } />
+              <img src={ petImgs[0].imgurl || notfound } alt={ petImgs[0].alt || 'Imagem do pet' } />
             ) : (
               <img src={ notfound } alt={ 'Not found' } />
             ) }
@@ -64,7 +64,7 @@ const PetCardDetails = () => {
           {petImgs.length > 0 ? (
             petImgs.map(petImg => (
               <div className="pet-card-details-img-card" key={petImg.id}>
-                <img src={petImg.imgurl || 'url-imagem-padrao.jpg'} alt={petImg.name || 'Imagem do pet'} />
+                <img src={petImg.imgurl || 'url-imagem-padrao.jpg'} alt={petImg.alt || 'Imagem do pet'} />
               </div>
             ))
           ) : (

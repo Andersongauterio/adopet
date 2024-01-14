@@ -111,13 +111,14 @@ const FormPetCadastro = () => {
       });
 
       if (response.ok) {
+        const responseData = await response.json();
         toast.success(`Pet ${petId ? 'atualizado' : 'cadastrado'} com sucesso!`);
         reset();
         setSelectedCity(null);
         setSelectedSpecies(null);
         setSelectedGender(null);
         setSelectedSize(null);
-        navigate('/userArea');
+        navigate(`/add-images/${responseData.id}`);
       } else {
         toast.error('Falha ao cadastrar pet.');
         console.error('Failed to post:', response.statusText);

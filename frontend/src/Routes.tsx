@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddPetImgs from "./components/AddPetImgs";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import AddImgs from "./pages/AddImgs";
 import Adote from "./pages/Adote";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
@@ -29,6 +31,7 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastre-se" element={<Signup />} />
         <Route path="/editPet/:petId" element={<PrivateRoute element={<PetCadastro />} />} />
+        <Route path="/add-images/:petId" element={< AddImgs />} />
       </Routes>
       <Footer />
     </BrowserRouter>

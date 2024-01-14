@@ -12,6 +12,7 @@ import { UploadImgModule } from './modules/upload-img/upload-img.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { AuthModule } from './auth/auth.module';
+import { UploadModule } from './modules/upload/upload.module';
 
 @Module({
   imports: [
@@ -42,6 +43,7 @@ import { AuthModule } from './auth/auth.module';
     AdoptionFormsModule,
     UploadImgModule,
     AuthModule,
+    UploadModule,
   ]
 })
 export class AppModule {}

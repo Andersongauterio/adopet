@@ -6,4 +6,6 @@ export class CreatePetImgsDto {
 
   @IsUrl()
   imgurl: string;
+
+  pet_id: number;
 }

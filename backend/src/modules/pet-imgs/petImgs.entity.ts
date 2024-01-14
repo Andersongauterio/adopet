@@ -11,6 +11,9 @@ export class PetImgs {
   pet: Pet;
 
   @Column()
+  pet_id: number;
+
+  @Column()
   alt: string;
 
   @Column()

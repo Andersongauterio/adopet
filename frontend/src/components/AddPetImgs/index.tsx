@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './styles.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddPetImgs: React.FC = () => {
 
@@ -39,6 +41,7 @@ const AddPetImgs: React.FC = () => {
         const imgUrl = await uploadImageToBackend(file);
         if (imgUrl) {
           setImages((prevImages) => [...prevImages, imgUrl]);
+          toast.success("Imagem carregada com sucesso!");
         }
       }
     }
@@ -47,7 +50,7 @@ const AddPetImgs: React.FC = () => {
   const handleSaveImages = async () => {
 
     const altText = "Descrição da imagem";
-
+    debugger;
     for (const imgUrl of images) {
       const createPetImgsDto = {
         pet_id: Number(petId),
@@ -56,7 +59,7 @@ const AddPetImgs: React.FC = () => {
       };
 
       try {
-        const url = `${process.env.REACT_APP_API_URL}/api/pet-imgs`
+        const url = `${process.env.REACT_APP_API_URL}/pet-imgs`
         const response = await fetch(url, {
           method: 'POST',
           headers: {
@@ -64,6 +67,7 @@ const AddPetImgs: React.FC = () => {
           },
           body: JSON.stringify(createPetImgsDto)
         });
+        toast.success("Imagem salva com sucesso!");
 
         if (!response.ok) {
           throw new Error('Falha ao salvar imagem');
@@ -92,6 +96,7 @@ const AddPetImgs: React.FC = () => {
       <button onClick={handleSaveImages} disabled={images.length === 0}>
         Salvar Imagens
       </button>
+      <ToastContainer />
     </div>
   );
 };

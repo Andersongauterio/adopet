@@ -1,14 +1,67 @@
-image-preview-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .adopet-addimgs-preview {
-    margin: 10px;
-  }
-  
-  .adopet-addimgs-preview img {
-    width: 100px; 
-    height: 100px;
-    object-fit: cover;
-  }
+.adopet-addimgs-container {
+  margin-top: 15px;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.adopet-addimgs-container input[type="file"] {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.adopet-addimgs-imgs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.adopet-addimgs-preview {
+  flex-basis: calc(33.333% - 10px);
+  text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.adopet-addimgs-preview img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+.adopet-addimgs-preview:hover img {
+  transform: scale(1.05);
+}
+
+.adopet-addimgs-preview button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.adopet-addimgs-preview button:hover {
+  background-color: #388e3c;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

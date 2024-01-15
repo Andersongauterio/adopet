@@ -51,7 +51,6 @@ const AddPetImgs: React.FC = () => {
     formData.append('file', file);
 
     try {
-      debugger;
       const url = `${process.env.REACT_APP_API_URL}/upload/image`;
       const response = await fetch(url, {
         method: 'POST',
@@ -59,11 +58,11 @@ const AddPetImgs: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error(`Erro  ao fazer upload da imagem: Status ${response.status}`);
+        throw new Error(`Erro ao fazer upload da imagem: Status ${response.status}`);
       }
 
-      const data = await response.text();
-      return data;
+      const imageUrl = await response.text();
+      return imageUrl;
     } catch (error) {
       console.error('Erro ao fazer upload da imagem:', error);
     }
@@ -84,18 +83,18 @@ const AddPetImgs: React.FC = () => {
   };
 
   const handleSaveImages = async () => {
-
     const altText = "Descrição da imagem";
-    debugger;
-    for (const imgUrl of images) {
+    const newImages = images.filter(image => !image.id);
+
+    for (const imageObj of newImages) {
       const createPetImgsDto = {
         pet_id: Number(petId),
         alt: altText,
-        imgurl: imgUrl
+        imgurl: imageObj.imgurl
       };
 
       try {
-        const url = `${process.env.REACT_APP_API_URL}/pet-imgs`
+        const url = `${process.env.REACT_APP_API_URL}/pet-imgs`;
         const response = await fetch(url, {
           method: 'POST',
           headers: {
@@ -103,16 +102,18 @@ const AddPetImgs: React.FC = () => {
           },
           body: JSON.stringify(createPetImgsDto)
         });
-        toast.success("Imagem salva com sucesso!");
 
         if (!response.ok) {
-          throw new Error('Falha ao salvar imagem');
+          throw new Error(`Falha ao salvar imagem: Status ${response.status}`);
+        } else {
+          toast.success("Imagem salva com sucesso!");
         }
       } catch (error) {
         console.error('Erro ao salvar imagem:', error);
+        toast.error("Erro ao salvar imagem.");
       }
     }
-  }
+  };
 
   const updateImageInBackend = async (
     imageId: number,
@@ -181,7 +182,7 @@ const AddPetImgs: React.FC = () => {
           </div>
         ))}
       </div>
-      <button onClick={handleSaveImages} disabled={images.length === 0}>
+      <button className='btn btn-primary' onClick={handleSaveImages} disabled={images.length === 0}>
         Salvar Imagens
       </button>
       <ToastContainer />

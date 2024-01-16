@@ -15,7 +15,7 @@ export class UploadController {
     try {
       const response = await axios.post('https://api.imgur.com/3/image', formData, {
         headers: {
-          'Authorization': 'Client-ID 3f1526c6e224058',
+          'Authorization': `Client-ID ${process.env.CLIENT_ID}`,
           ...formData.getHeaders(),
         },
       });

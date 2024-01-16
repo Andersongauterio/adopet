@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import jwtDecode from 'jwt-decode';
 
 interface User {
   id: number;
@@ -6,6 +7,11 @@ interface User {
   email: string;
   createdAt: string;
   updatedAt: string;
+}
+
+interface DecodedToken {
+  exp: number;
+  iat: number;
 }
 
 type AuthContextType = {
@@ -33,10 +39,15 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
+  const checkTokenExpiration = () => {
     const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
-  }, []);
+    if (token) {
+      const decodedToken: DecodedToken = jwtDecode(token);
+      if (decodedToken.exp * 1000 < Date.now()) {
+        logout();
+      }
+    }
+  };
 
   const login = (token: string, user: User) => {
     localStorage.setItem('token', token);
@@ -49,6 +60,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser(null);
     setIsLoggedIn(false);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+
+    const interval = setInterval(() => {
+      checkTokenExpiration();
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    checkTokenExpiration();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>

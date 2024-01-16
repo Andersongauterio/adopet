@@ -10,7 +10,8 @@ const FormLogin = () => {
   const navigate = useNavigate();
   const { login: performLogin } = useAuth();
 
-  const handleLogin = () => {
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
       method: 'POST',
       headers: {
@@ -18,20 +19,20 @@ const FormLogin = () => {
       },
       body: JSON.stringify({ login, password }),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Falha no login.');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Login Successful:', data);
-      performLogin(data.access_token, data.user);
-      navigate('/');
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Falha no login.');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Login Successful:', data);
+        performLogin(data.access_token, data.user);
+        navigate('/');
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
   }
 
   const handleSignUp = () => {
@@ -41,19 +42,23 @@ const FormLogin = () => {
   return (
     <div className='adopet-form-login-container'>
       <h2>Login</h2>
-      <input
-        type="text"
-        placeholder="Usuário"
-        value={login}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Senha"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
+      <form className='form-group' onSubmit={handleLogin}>
+        <input
+          className='form-control'
+          type="text"
+          placeholder="Usuário"
+          value={login}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          className='form-control'
+          type="password"
+          placeholder="Senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Login</button>
+      </form>
       <button onClick={handleSignUp} className="adopet-form-login-button">Cadastre-se</button>
     </div>
   );

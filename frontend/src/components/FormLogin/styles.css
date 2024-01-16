@@ -1,27 +1,18 @@
 .adopet-form-login-container {
   width: 500px;
-  height: 600px;
+  min-height: calc(100vh - 400px);
   border-radius: 10px;
   background: linear-gradient(to right, #d8c5b6, #666350);
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
 }
 
 .adopet-form-login-container h2 {
   text-align: center;
   margin-top: 40px;
-}
-
-.adopet-form-login-container input {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
 }
 
 .adopet-form-login-container button {
@@ -44,3 +35,14 @@
   cursor: pointer;
 }
 
+.adopet-form-login-container form {
+  width: 100%;
+}
+
+.adopet-form-login-container input {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
